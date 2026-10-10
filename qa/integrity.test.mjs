@@ -4,12 +4,14 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { themes, totalWorks } from '../src/catalog.js';
 
-test('17 unique works retain the five themes and valid source attribution', () => {
-  assert.equal(themes.length, 5); assert.equal(totalWorks, 17);
+test('14 visual works retain four themes and exclude every sound exhibit', () => {
+  assert.equal(themes.length, 4); assert.equal(totalWorks, 14);
   const works = themes.flatMap(theme => theme.items);
-  assert.equal(new Set(works.map(work => work.id)).size, 17);
+  assert.equal(new Set(works.map(work => work.id)).size, 14);
   for (const work of works) for (const field of ['repo', 'license', 'implementation', 'renderer']) assert.ok(work[field], `${work.id}: ${field}`);
-  for (const id of ['lenia', 'fluid', 'origami', 'pink-trombone', 'shan-shui']) assert.ok(works.some(work => work.id === id));
+  for (const id of ['lenia', 'fluid', 'origami', 'shan-shui']) assert.ok(works.some(work => work.id === id));
+  assert.ok(!themes.some(theme=>theme.id==='sound'));
+  for (const id of ['pink-trombone','fft','tone']) assert.ok(!works.some(work=>work.id===id));
 });
 
 test('every upstream snapshot and painting matches its provenance hash', async () => {
@@ -36,5 +38,16 @@ test('three bundled paintings have public-domain museum evidence and CC0 mirror 
     assert.match(painting.license, /CC0/);
     assert.match(painting.mirror, /^https:\/\/commons.wikimedia.org\/wiki\/File:/);
     const bytes = await readFile('public' + painting.image); assert.ok(bytes.length > 10000);
+  }
+});
+
+test('three face-centred Threading presets retain source provenance and image hashes', async () => {
+  const portraits=JSON.parse(await readFile('public/artworks/portraits.json'));
+  assert.equal(portraits.length,3);
+  for (const portrait of portraits) {
+    assert.match(portrait.source,/^https:\/\/commons.wikimedia.org\/wiki\/File:/);
+    assert.equal(portrait.license,'Public domain · PD-Art');
+    assert.equal(createHash('sha256').update(await readFile('public/'+portrait.image)).digest('hex'),portrait.sha256);
+    assert.equal(portrait.crop.length,3);
   }
 });

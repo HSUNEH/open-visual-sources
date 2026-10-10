@@ -12,19 +12,26 @@ export function applyVowel(tract, ui, index) {
   tract.velumTarget = .01;
 }
 
-export function gentlyPerturb(field, random = Math.random) {
-  const active = [];
+export function perturbLenia(field, random = Math.random) {
+  // A shear changes actual neighbour relationships, without adding random
+  // cells or deleting mass. The solver, not an animation, then evolves it.
+  let mass = 0, moment = 0, variance = 0;
   for (let y = 0; y < field.length; y++)
-    for (let x = 0; x < field[y].length; x++)
-      if (field[y][x] > .15) active.push([x, y]);
-  if (!active.length) return false;
-  const [cx, cy] = active[Math.floor(random() * active.length)];
-  const radius = Math.max(3, field.length / 16);
+    for (const value of field[y]) { mass += value; moment += value * y; }
+  if (mass < .01) return false;
+  const center = moment / mass;
   for (let y = 0; y < field.length; y++)
-    for (let x = 0; x < field[y].length; x++) {
-      const v = field[y][x];
-      const weight = Math.exp(-((x-cx)**2 + (y-cy)**2) / (2*radius**2));
-      field[y][x] = v + .08 * weight * v * (1-v);
+    for (const value of field[y]) variance += value * (y-center)**2;
+  const radius = Math.max(3, Math.sqrt(variance / mass));
+  const direction = random() < .5 ? -1 : 1;
+  const amplitude = Math.max(2, field.length * .016);
+  for (let y = 0; y < field.length; y++) {
+    const t = (y-center) / radius;
+    const shift = Math.round(direction * amplitude * t * Math.exp((1-t*t)/2));
+    const row = field[y].slice(), width = row.length;
+    for (let x = 0; x < width; x++) {
+      field[y][x] = row[((x-shift)%width+width)%width];
     }
+  }
   return true;
 }

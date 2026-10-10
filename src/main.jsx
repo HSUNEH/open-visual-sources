@@ -14,11 +14,10 @@ import './exhibit-styles.css';
 const Drawing = lazy(() => import('./scenes/Drawing'));
 const Spatial = lazy(() => import('./scenes/Spatial'));
 const Interactive = lazy(() => import('./scenes/Interactive'));
-const Sound = lazy(() => import('./scenes/Sound'));
 const Kinetic = lazy(() => import('./scenes/Kinetic'));
 const Originals = lazy(() => import('./scenes/Originals'));
 const Volume = lazy(() => import('./scenes/Volume'));
-const sceneMap = { fish: Drawing, landscape: Drawing, line: Drawing, cloud: Volume, sculpture: Spatial, bvh: Spatial, primitive: Interactive, thread: Interactive, delaunay: Interactive, fft: Sound, sequencer: Sound, physics: Kinetic, morph: Kinetic, fluid: Originals, lenia: Originals, origami: Originals, voice: Originals };
+const sceneMap = { fish: Drawing, landscape: Drawing, line: Drawing, cloud: Volume, sculpture: Spatial, bvh: Spatial, primitive: Interactive, thread: Interactive, delaunay: Interactive, physics: Kinetic, morph: Kinetic, fluid: Originals, lenia: Originals, origami: Originals };
 
 function initialLocation() {
   const id = location.hash.slice(1).split('/').pop();

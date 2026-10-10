@@ -1,0 +1,50 @@
+[
+  {
+    "id": "mona-lisa",
+    "title": "모나리자",
+    "artist": "다빈치",
+    "file": "Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg",
+    "crop": [
+      0.2,
+      0.1,
+      0.65
+    ],
+    "image": "artworks/mona-lisa.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg/960px-Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg",
+    "license": "Public domain · PD-Art",
+    "sha256": "5f223c31ba0a477eb7cbe5e5f959d822cbfc46081b19b96498cbd5601d9ac81d"
+  },
+  {
+    "id": "pearl-earring",
+    "title": "진주 귀걸이 소녀",
+    "artist": "페르메이르",
+    "file": "1665_Girl_with_a_Pearl_Earring.jpg",
+    "crop": [
+      0.1,
+      0.08,
+      0.8
+    ],
+    "image": "artworks/pearl-earring.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/1665_Girl_with_a_Pearl_Earring.jpg/960px-1665_Girl_with_a_Pearl_Earring.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:1665_Girl_with_a_Pearl_Earring.jpg",
+    "license": "Public domain · PD-Art",
+    "sha256": "6f1a0c80ad62afda389c5f3ac1da5adc5a6d08370287f1e2599b38c15391644e"
+  },
+  {
+    "id": "van-gogh",
+    "title": "자화상",
+    "artist": "고흐",
+    "file": "Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg",
+    "crop": [
+      0.17,
+      0.04,
+      0.69
+    ],
+    "image": "artworks/van-gogh.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg/960px-Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg",
+    "license": "Public domain · PD-Art",
+    "sha256": "7f66c8a175ed0623de34f558fe0474644f1433f91587df09bc61d9912d1f9ecd"
+  }
+]

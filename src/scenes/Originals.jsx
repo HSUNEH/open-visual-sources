@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Slider } from './shared';
-import { applyVowel, gentlyPerturb } from './exhibit-controls';
+import { applyVowel, perturbLenia } from './exhibit-controls';
 import { assetUrl } from '../asset-url';
 
 const entries = {
@@ -53,8 +53,7 @@ const adapters = {
     };
   `,
   lenia: `
-    const gentlyPerturb = ${gentlyPerturb.toString()};
-    let lastStimulus = -Infinity;
+    const perturbLenia = ${perturbLenia.toString()};
     PopulateCatalogue = function(){};
     window.addEventListener('load', () => {
       document.body.appendChild(canvas1.can);
@@ -66,9 +65,9 @@ const adapters = {
         pause(value) { isRunning = !value; setExhibitPaused(value); DrawAllPanels(); },
         species(code) { PresetAnimal({fsize:7,animalCode:code}); TransformField(0,0,2,0,0); optCenter=Center_POS; DrawAllPanels(); },
         disturb() {
-          if(performance.now()-lastStimulus<800) return;
-          lastStimulus=performance.now();
-          gentlyPerturb(field); NextGen(false); CalcMoments(); DrawAllPanels();
+          if(!perturbLenia(field)) return false;
+          NextGen(false); CalcMoments(); DrawAllPanels();
+          return true;
         },
       };
     });
@@ -152,6 +151,10 @@ export default function Originals({ kind, paused }) {
   const [source, setSource] = useState(''), [ready, setReady] = useState(false), [error, setError] = useState('');
   const [value, setValue] = useState(kind === 'origami' ? 60 : kind === 'voice' ? 140 : 45);
   const [choice, setChoice] = useState(0), [playing, setPlaying] = useState(false);
+  const [stimuli, setStimuli] = useState(0), [stimulusBusy, setStimulusBusy] = useState(false);
+  const [stimulusEmpty, setStimulusEmpty] = useState(false);
+  const stimulusTimer = useRef(null);
+  useEffect(() => () => clearTimeout(stimulusTimer.current), []);
   const playingRef = useRef(false), generation = useRef(0);
   function api() { return frame.current?.contentWindow?.exhibit; }
   useEffect(() => {
@@ -190,13 +193,22 @@ export default function Originals({ kind, paused }) {
   const options = kind === 'lenia' ? ['회전 · Gyrorbium', '유영 · Orbium', '쌍둥이 · Hydrogeminium'] : kind === 'origami' ? ['물폭탄 접기', '미우라 접기', '종이학'] : ['아', '에', '우'];
   function select(index) {
     setChoice(index);
-    if (kind === 'lenia') api()?.species(['OG2', 'O2(a)', '3G'][index]);
+    if (kind === 'lenia') { api()?.species(['OG2', 'O2(a)', '3G'][index]); setStimuli(0); setStimulusEmpty(false); }
     if (kind === 'origami') { api()?.model(['Tessellations/huffmanWaterbomb.svg','Tessellations/miura-ori.svg','Origami/flat_crane.svg'][index]); api()?.fold(value); }
     if (kind === 'voice') api()?.vowel(index);
+  }
+  function stimulate() {
+    if (!ready || stimulusBusy) return;
+    const changed = api()?.disturb();
+    setStimulusEmpty(!changed);
+    if (changed) setStimuli(count => count + 1);
+    setStimulusBusy(true);
+    stimulusTimer.current = setTimeout(() => setStimulusBusy(false), 800);
   }
   return <>
     <div className={`stage original-stage original-${kind}`}>
       {source && <iframe ref={frame} title={entries[kind].title} srcDoc={source} className={kind === 'voice' && !playing ? 'voice-idle' : ''} allow="autoplay"/>}
+      {kind === 'lenia' && ready && <p className="lenia-feedback" role="status">{stimulusEmpty ? '생명체가 사라졌습니다. 위에서 패턴을 다시 선택해 주세요.' : stimuli ? `자극 ${stimuli}회 · 몸체를 옆으로 휘었습니다.${paused ? ' 재생하면 이후 반응을 볼 수 있습니다.' : ''}` : '몸체를 휘어 놓으면 어떻게 반응할까요?'}</p>}
       {!ready && !error && <div className="original-loading" role="status">원본 시뮬레이터를 준비하고 있습니다</div>}
       {error && <div className="original-loading" role="alert">{error}</div>}
     </div>
@@ -204,9 +216,9 @@ export default function Originals({ kind, paused }) {
     <div className={`work-controls original-controls ${kind === 'voice' ? 'voice-controls' : kind === 'fluid' ? 'fluid-controls' : ''}`}>
       {kind !== 'lenia' && <Slider label={kind === 'origami' ? '접힌 정도' : kind === 'voice' ? '목소리 높이' : '소용돌이 강도'} value={value} onChange={update} min={kind === 'voice' ? 80 : 0} max={kind === 'voice' ? 320 : 100} suffix={kind === 'origami' ? '%' : kind === 'voice' ? ' Hz' : ''}/>}
       {kind === 'fluid' && <button className="control-button" disabled={!ready} onClick={() => api()?.burst()}>색 폭발시키기</button>}
-      {kind === 'lenia' && <button className="control-button" disabled={!ready} onClick={() => api()?.disturb()}>살짝 자극 주기</button>}
+      {kind === 'lenia' && <button className="control-button" disabled={!ready || stimulusBusy} onClick={stimulate}>몸체에 자극 주기</button>}
       {kind === 'voice' && <button className={`control-button ${playing ? 'active' : ''}`} disabled={!ready || paused} onClick={toggleVoice}>{playing ? '발성 멈추기' : '발성 시작'}</button>}
-      <p className="control-note">{kind === 'fluid' ? '화면을 휘저으면 물감이 흐릅니다. 실제 유체 방정식을 GPU로 풉니다.' : kind === 'lenia' ? '생명체를 고르고 자극을 주세요. 회복하거나, 분열하거나, 사라집니다.' : kind === 'origami' ? '슬라이더로 펼치고 접기 · 드래그로 회전. 종이의 변형을 실제로 계산합니다.' : '발성을 켠 뒤 혀와 입안을 드래그하세요. 녹음 없이 성도를 계산해 만든 목소리입니다.'}</p>
+      {kind !== 'lenia' && <p className="control-note">{kind === 'fluid' ? '화면을 휘저으면 물감이 흐릅니다. 실제 유체 방정식을 GPU로 풉니다.' : kind === 'origami' ? '슬라이더로 펼치고 접기 · 드래그로 회전. 종이의 변형을 실제로 계산합니다.' : '발성을 켠 뒤 혀와 입안을 드래그하세요. 녹음 없이 성도를 계산해 만든 목소리입니다.'}</p>}
     </div>
   </>;
 }

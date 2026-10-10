@@ -11,6 +11,11 @@ const paintings = [
   { id: 24645, title: '큰 파도', artist: '호쿠사이' },
 ];
 const paintingPath = id => assetUrl(`artworks/${id}.${id === 24645 ? 'png' : 'jpg'}`);
+const portraits = [
+  {id:'mona-lisa',title:'모나리자',artist:'다빈치',file:'Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg',crop:[.2,.10,.65]},
+  {id:'pearl-earring',title:'진주 귀걸이 소녀',artist:'페르메이르',file:'1665_Girl_with_a_Pearl_Earring.jpg',crop:[.10,.08,.80]},
+  {id:'van-gogh',title:'자화상',artist:'고흐',file:'Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg',crop:[.17,.04,.69]},
+];
 
 function defaultImage(kind) {
   const canvas = document.createElement('canvas'); canvas.width = canvas.height = 128;
@@ -29,16 +34,18 @@ function defaultImage(kind) {
 }
 
 function ImageStudy({ kind, paused, seed }) {
+  const choices = kind === 'thread' ? portraits : paintings;
   const source = useRef(null), result = useRef(null), worker = useRef(null);
   const [input, setInput] = useState(() => defaultImage(kind));
   const [limit, setLimit] = useState(kind === 'thread' ? 1200 : 400);
   const [count, setCount] = useState(0);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
-  const [selected, setSelected] = useState(28560);
+  const [selected, setSelected] = useState(choices[0].id);
+  const selectedPainting = choices.find(p=>p.id===selected);
   const [vector, setVector] = useState('');
   const request = useRef(0);
-  useEffect(() => { selectPainting(paintings[0]); }, []);
+  useEffect(() => { selectPainting(choices[0]); }, []);
   useEffect(() => {
     const w = kind === 'primitive' ? primitiveAdapter() : new Worker(new URL('./image.worker.js', import.meta.url), { type: 'module' }); worker.current = w;
     source.current.width = source.current.height = input.width;
@@ -64,13 +71,15 @@ function ImageStudy({ kind, paused, seed }) {
   useEffect(() => () => { request.current++; }, []);
   useEffect(() => { worker.current?.postMessage({ type: 'paused', value: paused }); }, [paused]);
   useEffect(() => { worker.current?.postMessage({ type: 'limit', value: limit }); }, [limit]);
-  async function readImage(file, id) {
+  async function readImage(file, id, crop) {
     try {
       const bitmap = await createImageBitmap(file);
       const offscreen = document.createElement('canvas'); offscreen.width = offscreen.height = 256;
       const ctx = offscreen.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, 256, 256);
-      const side = Math.min(bitmap.width, bitmap.height);
-      ctx.drawImage(bitmap, (bitmap.width - side) / 2, (bitmap.height - side) / 2, side, side, 0, 0, 256, 256);
+      const side = Math.min(bitmap.width, bitmap.height) * (crop?.[2] || 1);
+      const x = crop ? bitmap.width*crop[0] : (bitmap.width-side)/2;
+      const y = crop ? bitmap.height*crop[1] : (bitmap.height-side)/2;
+      ctx.drawImage(bitmap, x, y, side, side, 0, 0, 256, 256);
       bitmap.close();
       if (request.current === id) setInput(ctx.getImageData(0, 0, 256, 256));
     } catch { if (request.current === id) setError('이미지를 읽지 못했습니다. 다른 파일로 시도해 주세요.'); }
@@ -81,7 +90,7 @@ function ImageStudy({ kind, paused, seed }) {
     try {
       const response = await fetch(paintingPath(painting.id));
       if (!response.ok) throw new Error('Image unavailable');
-      await readImage(await response.blob(), id);
+      await readImage(await response.blob(), id, painting.crop);
     } catch { if (request.current === id) { setBusy(false); setError('명화를 불러오지 못했습니다. 다시 선택해 주세요.'); } }
   }
   function upload(event) {
@@ -99,9 +108,9 @@ function ImageStudy({ kind, paused, seed }) {
         {kind === 'primitive' ? <div className="primitive-vector" role="img" aria-label="primitive.js가 삼각형으로 재구성한 고해상도 벡터 이미지" dangerouslySetInnerHTML={{__html:vector}}/> : <canvas ref={result} aria-label="1200px로 렌더링한 실선 이미지" style={{borderRadius:'50%'}}/>}
         <span className="study-label">{busy ? '이미지 준비 중' : `${count} / ${limit} ${kind === 'thread' ? 'THREADS · 1200px' : 'TRIANGLES · VECTOR'}`}</span>
       </div>
-      <div className="painting-picker" aria-label="명화로 바로 체험">
-        {paintings.map(painting => <button key={painting.id} onClick={() => selectPainting(painting)} aria-pressed={selected === painting.id} aria-label={`${painting.artist} ${painting.title} 선택`}><img src={paintingPath(painting.id)} alt=""/><span>{painting.artist}<small>{painting.title}</small></span></button>)}
-        <a className="painting-credit" href={`https://www.artic.edu/artworks/${selected || 28560}`} target="_blank" rel="noreferrer">Art Institute of Chicago · CC0 ↗</a>
+      <div className="painting-picker" aria-label={kind === 'thread' ? '얼굴 이미지로 바로 체험' : '명화로 바로 체험'}>
+        {choices.map(painting => <button key={painting.id} onClick={() => selectPainting(painting)} aria-pressed={selected === painting.id} aria-label={`${painting.artist} ${painting.title} 선택`}><img src={paintingPath(painting.id)} alt=""/><span>{painting.artist}<small>{painting.title}</small></span></button>)}
+        {selectedPainting && <a className="painting-credit" href={kind === 'thread' ? `https://commons.wikimedia.org/wiki/File:${selectedPainting.file}` : `https://www.artic.edu/artworks/${selected}`} target="_blank" rel="noreferrer">{kind === 'thread' ? 'Wikimedia Commons · Public domain ↗' : 'Art Institute of Chicago · CC0 ↗'}</a>}
       </div>
     </div>
     <div className="work-controls">

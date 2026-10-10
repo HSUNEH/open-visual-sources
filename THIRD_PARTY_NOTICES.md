@@ -43,3 +43,13 @@ The three paintings are public-domain works distributed as CC0 by the Art Instit
 - Katsushika Hokusai, *Under the Wave off Kanagawa*, AIC 24645 — https://www.artic.edu/artworks/24645
 
 Images are bundled, not hotlinked. Conversion uses a square center crop. Original programmatic input illustrations remain as loading fallbacks. There are no model weights, prerecorded audio samples, or remote font services.
+
+## Threading portrait presets
+
+The following public-domain reproductions are bundled from Wikimedia Commons. The original image bytes are preserved; the browser uses a face-centred crop for the string-art input. Source URLs, crop coordinates, download URLs, and SHA-256 hashes are recorded in `public/artworks/portraits.json`. Reproduce downloads with `node scripts/vendor-portraits.mjs`.
+
+- Leonardo da Vinci, *Mona Lisa* — [C2RMF reproduction, retouched by Dcoetzee](https://commons.wikimedia.org/wiki/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg), public domain / PD-Art; retouch released into the public domain.
+- Johannes Vermeer, *Girl with a Pearl Earring* — [Wikimedia Commons reproduction](https://commons.wikimedia.org/wiki/File:1665_Girl_with_a_Pearl_Earring.jpg), public domain / PD-Art.
+- Vincent van Gogh, *Self-Portrait* — [Google Art Project reproduction](https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg), public domain / PD-Art.
+
+Sound exhibits are no longer listed or reachable in the exhibition. Their previous source snapshots and license notices are retained for provenance; the FFT/Tone scene is not bundled into the app.
