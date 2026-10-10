@@ -1,0 +1,407 @@
+[
+  {
+    "file": "vendor/fluid/script.js",
+    "url": "https://raw.githubusercontent.com/PavelDoGreat/WebGL-Fluid-Simulation/master/script.js",
+    "sha256": "291d86de38ea23b8fb63d1879afeea77e9a4556900bbd67e13bc1d5ea007ce4e"
+  },
+  {
+    "file": "vendor/fluid/dat.gui.min.js",
+    "url": "https://raw.githubusercontent.com/PavelDoGreat/WebGL-Fluid-Simulation/master/dat.gui.min.js",
+    "sha256": "27976ca8ac2e125de97163455131890e8686ed2afc2007cd5524080b7d53ef7b"
+  },
+  {
+    "file": "vendor/fluid/LDR_LLL1_0.png",
+    "url": "https://raw.githubusercontent.com/PavelDoGreat/WebGL-Fluid-Simulation/master/LDR_LLL1_0.png",
+    "sha256": "140c55bd97c21b9b22008d7054b492333fec67fbfc1a1b266e5b0209b647eed4"
+  },
+  {
+    "file": "vendor/fluid/LICENSE",
+    "url": "https://raw.githubusercontent.com/PavelDoGreat/WebGL-Fluid-Simulation/master/LICENSE",
+    "sha256": "1be448ae1212de2bee77b4cf851ab0acea0a7f7f32d21cd73095dd94dc173f66"
+  },
+  {
+    "file": "vendor/lenia/Lenia.html",
+    "url": "https://raw.githubusercontent.com/Chakazul/Lenia/master/JavaScript/Lenia.html",
+    "sha256": "75823d6d754da61d36a082441373424280e0811aab2ac8ad3ba99fa6c1469eb2"
+  },
+  {
+    "file": "vendor/lenia/Lenia-LifeForms.js",
+    "url": "https://raw.githubusercontent.com/Chakazul/Lenia/master/JavaScript/Lenia-LifeForms.js",
+    "sha256": "11ea3ab4e1ebd870855cf0db9d7b9d887addafb78dea39cb0ceae1951114ceb1"
+  },
+  {
+    "file": "vendor/lenia/libs/MersenneTwister19937.js",
+    "url": "https://raw.githubusercontent.com/Chakazul/Lenia/master/JavaScript/libs/MersenneTwister19937.js",
+    "sha256": "9b315b7617f5beb8db0f371ee0d6ece91b2dae524ff5786ab82ee9a82c410ac4"
+  },
+  {
+    "file": "vendor/lenia/libs/jsgif/LZWEncoder.js",
+    "url": "https://raw.githubusercontent.com/Chakazul/Lenia/master/JavaScript/libs/jsgif/LZWEncoder.js",
+    "sha256": "bde5cef01aa54fb91ecc7873cd00fd569995aba9a3a66f5e971cdab76a18bfff"
+  },
+  {
+    "file": "vendor/lenia/libs/jsgif/NeuQuant.js",
+    "url": "https://raw.githubusercontent.com/Chakazul/Lenia/master/JavaScript/libs/jsgif/NeuQuant.js",
+    "sha256": "2d3a1be848787d8910b9542f2b9d850649df04b8738f97cf10c78119c130f360"
+  },
+  {
+    "file": "vendor/lenia/libs/jsgif/GIFEncoder.js",
+    "url": "https://raw.githubusercontent.com/Chakazul/Lenia/master/JavaScript/libs/jsgif/GIFEncoder.js",
+    "sha256": "ae0fab20f3ad96f3e6f268f645451a831062178247e0ab2846859665944a9fe2"
+  },
+  {
+    "file": "vendor/lenia/libs/plotly-latest.min.js",
+    "url": "https://raw.githubusercontent.com/Chakazul/Lenia/master/JavaScript/libs/plotly-latest.min.js",
+    "sha256": "b7f75883d216c12a8fde4b382d1eb11d6077f2455a41671553854e890c01cb27"
+  },
+  {
+    "file": "vendor/lenia/LICENSE.md",
+    "url": "https://raw.githubusercontent.com/Chakazul/Lenia/master/LICENSE.md",
+    "sha256": "2b44d8d9a71aead092d67a6c365ed7c3ca54e8bbb265b1f4a8393aa66ef2cd80"
+  },
+  {
+    "file": "vendor/origami/index.html",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/index.html",
+    "sha256": "6ef0dc96dfd1931ffdf3c4b733afce2cf2a070de449c5486bd64d27984f82542"
+  },
+  {
+    "file": "vendor/origami/dependencies/bootstrap.min.css",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/bootstrap.min.css",
+    "sha256": "b5fd723750763ebb731f9221e413e7d64d58d5192dc040e42292ed3dcccca732"
+  },
+  {
+    "file": "vendor/origami/dependencies/flat-ui.min.css",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/flat-ui.min.css",
+    "sha256": "3d4f185c956c8928a0ef3af8a5fc3dcd444e6a9afe2191a3fb7db497f0f13d91"
+  },
+  {
+    "file": "vendor/origami/dependencies/jquery-ui.min.css",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/jquery-ui.min.css",
+    "sha256": "e94e24a736d7e022ed5ff2ecc49ef1b435071920affbafd104ec46be0e401e39"
+  },
+  {
+    "file": "vendor/origami/css/nav.css",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/css/nav.css",
+    "sha256": "8cdf33ca1b64d47a2eb8085daf9a88ad859665c52a8e5bf1d5c5580d4247d06b"
+  },
+  {
+    "file": "vendor/origami/css/main.css",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/css/main.css",
+    "sha256": "6e66740c02b4400ab783fec0f1de506b98d354928bbeb9c546041261b16d4d88"
+  },
+  {
+    "file": "vendor/origami/dependencies/jquery-3.2.1.min.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/jquery-3.2.1.min.js",
+    "sha256": "87083882cc6015984eb0411a99d3981817f5dc5c90ba24f0940420c5548d82de"
+  },
+  {
+    "file": "vendor/origami/dependencies/jquery-ui.min.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/jquery-ui.min.js",
+    "sha256": "4a1e4512f4ab41c2c420a262e3d3aa6b996186aadfdfafdedc930e65560b7f85"
+  },
+  {
+    "file": "vendor/origami/dependencies/flat-ui.min.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/flat-ui.min.js",
+    "sha256": "33cc2bfefd536a71d11960fd33288746ac01d29cc05238d4543cb3abc3089d8d"
+  },
+  {
+    "file": "vendor/origami/dependencies/three.min.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/three.min.js",
+    "sha256": "3bff1e93ca19f81725db1e68cd6aa797f0af3aecfe9a9c51d2c074272fe248ab"
+  },
+  {
+    "file": "vendor/origami/dependencies/binary_stl_writer.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/binary_stl_writer.js",
+    "sha256": "c95362d90d2e9c7b1ee3144b6f08660486cc2326cbb316f2d668413ad8e4e89a"
+  },
+  {
+    "file": "vendor/origami/dependencies/TrackballControls.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/TrackballControls.js",
+    "sha256": "8a50b713cadcfb19985cf2ddffbbd8af1de786cc6a86633266b5ae929debd2b3"
+  },
+  {
+    "file": "vendor/origami/dependencies/Projector.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/Projector.js",
+    "sha256": "06472c14608cd79a115ae39083208da7d6cdd8368e6261d36a69e6292f83cad5"
+  },
+  {
+    "file": "vendor/origami/dependencies/SVGRenderer.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/SVGRenderer.js",
+    "sha256": "502609a65b9d52217f2b04397fa29ad97b098a847598196ddf8ed8f43b6ada1e"
+  },
+  {
+    "file": "vendor/origami/dependencies/underscore-min.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/underscore-min.js",
+    "sha256": "a1b6400a21ddee090e93d8882ffa629963132785bfa41b0abbea199d278121e9"
+  },
+  {
+    "file": "vendor/origami/dependencies/FileSaver.min.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/FileSaver.min.js",
+    "sha256": "14f249b7c9c0fb12f8454ebf82cae203ca7cc4078b19ab68c938e576f40a19d1"
+  },
+  {
+    "file": "vendor/origami/dependencies/SVGLoader.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/SVGLoader.js",
+    "sha256": "8b2ffc848f6d605c491304711df83a586140e5c59c27f501c7e1413ee1a8c5cd"
+  },
+  {
+    "file": "vendor/origami/dependencies/OBJExporter.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/OBJExporter.js",
+    "sha256": "847ae764359f4c77c78c38407f3f7e85c0cfdaa0e6cdabf08107d95feeb6f178"
+  },
+  {
+    "file": "vendor/origami/dependencies/path-data-polyfill.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/path-data-polyfill.js",
+    "sha256": "e81dd290a60ee3d9adfbac57aac8ed0199e9570790c8c413742273d53547fac6"
+  },
+  {
+    "file": "vendor/origami/dependencies/earcut.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/earcut.js",
+    "sha256": "fd8b3abe7334b6084ebbf20dc59b65ad31692d2c4ceecb549bec8c740d86df3a"
+  },
+  {
+    "file": "vendor/origami/dependencies/fold.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/fold.js",
+    "sha256": "a742fb1937c378572992b6667b9e7cad0249e481bf016877f3e8d1d6512d1c39"
+  },
+  {
+    "file": "vendor/origami/dependencies/CCapture.all.min.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/CCapture.all.min.js",
+    "sha256": "ddef06d723784942ce2a80ed680992c4cbb9db9ad743a55a5f8a6d713e57646f"
+  },
+  {
+    "file": "vendor/origami/dependencies/numeric-1.2.6.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/numeric-1.2.6.js",
+    "sha256": "5dcaba2016fd237091e3a17b0dc272fb21f0e2b15d7628f95a0ad0cd4cdf4020"
+  },
+  {
+    "file": "vendor/origami/dependencies/EffectComposer.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/EffectComposer.js",
+    "sha256": "c7f023504cb92b98efff3a640542d4a383f0647c15a3530f0ac8a0263677f636"
+  },
+  {
+    "file": "vendor/origami/dependencies/MaskPass.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/MaskPass.js",
+    "sha256": "08c2fa9a03180f1a59f7fdba09c4a2b35434629dc259704aaeeb6ce6f7c1b6af"
+  },
+  {
+    "file": "vendor/origami/dependencies/ShaderPass.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/ShaderPass.js",
+    "sha256": "54541c89a6dbee1432d44a8e8395a0a36751ca98ca316e72313d6747e105eff3"
+  },
+  {
+    "file": "vendor/origami/dependencies/CopyShader.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/CopyShader.js",
+    "sha256": "4a54e95acbab019471208fa62bb69128bdf6577b9bf4e7b1a77f35dc341c28af"
+  },
+  {
+    "file": "vendor/origami/dependencies/SSAOShader.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/SSAOShader.js",
+    "sha256": "9af4e87158d76f1840530270216d65a78745187299c1aa44eca86e0729b02afe"
+  },
+  {
+    "file": "vendor/origami/dependencies/Detector.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/Detector.js",
+    "sha256": "8d99a56cc8a97efd4994e9d0e68682cec220b9017192927a483577eac0a4bb87"
+  },
+  {
+    "file": "vendor/origami/dependencies/RenderPass.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/RenderPass.js",
+    "sha256": "c3439c51e4c032d3b5cdb8d4592be71f11b5eda1b3c2913491f639ea22f83ecb"
+  },
+  {
+    "file": "vendor/origami/dependencies/WebVR.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/WebVR.js",
+    "sha256": "b2e868116cf0f6ff4e1ee76a034427e78d38d0df23755d5e88c03c3bdf6dcb08"
+  },
+  {
+    "file": "vendor/origami/dependencies/VRController.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/VRController.js",
+    "sha256": "20066c5e5a76b1ac1b00801bfa3ecffce5725cea6671bd9041c6f81caef321cd"
+  },
+  {
+    "file": "vendor/origami/dependencies/datguivr.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/datguivr.js",
+    "sha256": "a458d41b84ffeaa2806cb06194a63368bd520a42704442857a69654fe982a9c8"
+  },
+  {
+    "file": "vendor/origami/js/dynamic/GLBoilerplate.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/dynamic/GLBoilerplate.js",
+    "sha256": "e962074c1551157ac003cd3b1e8a732d0d56a55e6cf86adc4be8860bbb30fa6c"
+  },
+  {
+    "file": "vendor/origami/js/dynamic/GPUMath.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/dynamic/GPUMath.js",
+    "sha256": "68f2110f6f1352397d3f677bbe385ef243e1fd9796522934277b263ab69cd795"
+  },
+  {
+    "file": "vendor/origami/js/controls.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/controls.js",
+    "sha256": "45846d1e2ae599d4a6b0153b37a4cbbf68741682fbfa66b07c5e53743c65761f"
+  },
+  {
+    "file": "vendor/origami/js/threeView.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/threeView.js",
+    "sha256": "a2a8eaf4bb2c999036ad106ed7b41d7a5fbf5a8fee67b8d83f63d591e8b6e64b"
+  },
+  {
+    "file": "vendor/origami/js/globals.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/globals.js",
+    "sha256": "564a1f35ffcad1d795df793b6949fd49aa193f513d1f035a896bb2d38a85aae6"
+  },
+  {
+    "file": "vendor/origami/js/node.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/node.js",
+    "sha256": "60ce95e0c5345c9f8b88bd6d6b194eeb1dcdded7916a8f375a3ea4d3e3c05918"
+  },
+  {
+    "file": "vendor/origami/js/beam.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/beam.js",
+    "sha256": "dc49febbec49f61c7f35927c263470648780ccd3181cd89e1383cdb5a4dadf50"
+  },
+  {
+    "file": "vendor/origami/js/crease.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/crease.js",
+    "sha256": "be29ee0ad444f21a346ab0cfb4a872f4ebf3fd9c9be58530bbd2b1a75db3d328"
+  },
+  {
+    "file": "vendor/origami/js/model.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/model.js",
+    "sha256": "db2db5bc67bfdaaff15eec5c0f33de4635f8175206036d831d9a817bdedf7eff"
+  },
+  {
+    "file": "vendor/origami/js/3dUI.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/3dUI.js",
+    "sha256": "f38d4713db43b5262a4c60d26faddfae7e4c27cd8fad76eade03bb201d319fa6"
+  },
+  {
+    "file": "vendor/origami/js/staticSolver.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/staticSolver.js",
+    "sha256": "149a31d582aea108b1df61ae55e64a816b04ce80425eef796ea76b3ee0c83a5b"
+  },
+  {
+    "file": "vendor/origami/js/dynamic/dynamicSolver.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/dynamic/dynamicSolver.js",
+    "sha256": "df6ff0c1522838aa3ef7cff091111d49bbe7ab83243d46ce73e738a861b2c26b"
+  },
+  {
+    "file": "vendor/origami/js/rigidSolver.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/rigidSolver.js",
+    "sha256": "3371a82ffa4fe6d88af776a326d10a5887adbf689da167a22c09bf4e40def88e"
+  },
+  {
+    "file": "vendor/origami/js/pattern.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/pattern.js",
+    "sha256": "88b96e2c30277a2009e1c17a4f1d60033030d5482c40c1f661c913c72f384fa9"
+  },
+  {
+    "file": "vendor/origami/js/saveSTL.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/saveSTL.js",
+    "sha256": "2d425672d918f088f562cce38469a9fc8a0dba8eb9614a3c166cb2d9c1374749"
+  },
+  {
+    "file": "vendor/origami/js/saveFOLD.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/saveFOLD.js",
+    "sha256": "d7a33910e70b57dc7ddb78e9260ad6b1a992c0480d6fa77de97a0156fc793956"
+  },
+  {
+    "file": "vendor/origami/js/importer.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/importer.js",
+    "sha256": "480a95d9490fe54f51c5eafd0c64c128c37a79f9e7f4340e880ed79c9a139ebe"
+  },
+  {
+    "file": "vendor/origami/js/VRInterface.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/VRInterface.js",
+    "sha256": "ef567b5f87422ccc157467fdcfb5e61eeee63adf0dd17b8ce393c9f07db606ab"
+  },
+  {
+    "file": "vendor/origami/js/videoAnimator.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/videoAnimator.js",
+    "sha256": "f112fdf85eb88d7e4b2842d0c68e523aaa055c88a72f4d2814bd228e26b3fa30"
+  },
+  {
+    "file": "vendor/origami/dependencies/cdt2d.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/cdt2d.js",
+    "sha256": "4947d373a03ccf4ed13056953fd5aa50a3240ede504b35004c1614339c4b024e"
+  },
+  {
+    "file": "vendor/origami/dependencies/svgpath.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/dependencies/svgpath.js",
+    "sha256": "c1fe284f95dd564227d4b9f511e7522c64fc3ac4ad61173d0c96ec69941a6260"
+  },
+  {
+    "file": "vendor/origami/js/curvedFolding.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/curvedFolding.js",
+    "sha256": "44b88c2fb021b33ff4b1845eb3f355ed4c365c278bf4fbdae1ab793f28c3f9f2"
+  },
+  {
+    "file": "vendor/origami/js/main.js",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/js/main.js",
+    "sha256": "64e5ba327a42d18a8ef2bab5897770c1d4160fe582dbc638733e2b08ec702dea"
+  },
+  {
+    "file": "vendor/origami/LICENSE",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/LICENSE",
+    "sha256": "eda13890da3e9f43ae3c72330a73cd42421449cc2aa66e59b1d36a6e5917bca4"
+  },
+  {
+    "file": "vendor/origami/assets/Tessellations/huffmanWaterbomb.svg",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/assets/Tessellations/huffmanWaterbomb.svg",
+    "sha256": "a9551a2a4d66373b8522c738bbcfcb1fd477f8d8287a00e09d6cb9604df6d239"
+  },
+  {
+    "file": "vendor/origami/assets/Origami/traditionalCrane.svg",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/assets/Origami/traditionalCrane.svg",
+    "sha256": "10493243421a868678e6bd8c91c73813331d02ce241c0fb3fe05ee83b3bd27d4"
+  },
+  {
+    "file": "vendor/origami/assets/Origami/flat_crane.svg",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/assets/Origami/flat_crane.svg",
+    "sha256": "1b5aeab65bcb0d5b8ae8bc29f1c28254402ba17fbfc0ec7ebf2f427841f4d567"
+  },
+  {
+    "file": "vendor/origami/assets/Tessellations/miura-ori.svg",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/assets/Tessellations/miura-ori.svg",
+    "sha256": "c945a0bbc760c7d13c0b55c53c3e75ebffa6c22bf973f1b2e4dc2c94fa80faa1"
+  },
+  {
+    "file": "vendor/origami/assets/Tessellations/miura_sharpangle.svg",
+    "url": "https://raw.githubusercontent.com/amandaghassaei/OrigamiSimulator/master/assets/Tessellations/miura_sharpangle.svg",
+    "sha256": "e50322c29fdb0afa4e2873bc2d3c2e75e74ea5bb7f311832b25c795722f08a72"
+  },
+  {
+    "file": "vendor/pink-trombone/index.html",
+    "url": "https://dood.al/pinktrombone/",
+    "sha256": "94f92caa426e9e7bd928ab82c7d0d75d297e1090411867f62dd09081f4e1cec2"
+  },
+  {
+    "file": "artworks/28560.json",
+    "url": "https://api.artic.edu/api/v1/artworks/28560?fields=id,title,artist_display,image_id,is_public_domain",
+    "sha256": "465d4d1c23749e517ee59c9b5bcee485bcf29223a5686a423051ee50ef4856d0"
+  },
+  {
+    "file": "artworks/28560.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Vincent_van_Gogh_-_The_Bedroom_-_1926.417_-_Art_Institute_of_Chicago.jpg/960px-Vincent_van_Gogh_-_The_Bedroom_-_1926.417_-_Art_Institute_of_Chicago.jpg",
+    "sha256": "34c2a15bbc1721cd49d9e51f1522b0ec27fedd504d6e491b00e6ddad1f59f832"
+  },
+  {
+    "file": "artworks/16568.json",
+    "url": "https://api.artic.edu/api/v1/artworks/16568?fields=id,title,artist_display,image_id,is_public_domain",
+    "sha256": "eaac9cd715c095bf7313b2ddf213d57aba237c59c8c03ed0aa2559ed90daeefd"
+  },
+  {
+    "file": "artworks/16568.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Claude_Monet_-_Water_Lilies_-_1933.1157_-_Art_Institute_of_Chicago.jpg/960px-Claude_Monet_-_Water_Lilies_-_1933.1157_-_Art_Institute_of_Chicago.jpg",
+    "sha256": "8e87b1ca2d8f4727fcb29b30c1b96b3aaf311ec8589a9e377a3cb9ae9adf42de"
+  },
+  {
+    "file": "artworks/24645.json",
+    "url": "https://api.artic.edu/api/v1/artworks/24645?fields=id,title,artist_display,image_id,is_public_domain",
+    "sha256": "be3de6c185a53cecb93e7e0af3edf464a3864f22e5b94772c9bd692c213d2a85"
+  },
+  {
+    "file": "artworks/24645.png",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/The_Great_Wave_off_Kanagawa.png/960px-The_Great_Wave_off_Kanagawa.png",
+    "sha256": "e6527d0e4b7a800e098083490a427831acca762b92f3e7163e7e3eb1f450d14a"
+  }
+]

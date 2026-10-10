@@ -1,0 +1,52 @@
+[
+  {
+    "file": "fishdraw.js",
+    "url": "https://raw.githubusercontent.com/LingDong-/fishdraw/master/fishdraw.js",
+    "sha256": "eedd3cfd816e78374bca3a62f30d900b1faacddfb5f49f49f04284a39285f1e0"
+  },
+  {
+    "file": "fishdraw.LICENSE",
+    "url": "https://raw.githubusercontent.com/LingDong-/fishdraw/master/LICENSE",
+    "sha256": "3ddf39fd7e02464a6681a5b3b5dc0a6082783c5525ce90eb861311ac38d71666"
+  },
+  {
+    "file": "shan-shui.html",
+    "url": "https://raw.githubusercontent.com/LingDong-/shan-shui-inf/master/index.html",
+    "sha256": "858792db2659e7d4c6604606d4ff2175f137f07061f8af51644f06ab0788215f"
+  },
+  {
+    "file": "shan-shui.LICENSE",
+    "url": "https://raw.githubusercontent.com/LingDong-/shan-shui-inf/master/LICENSE",
+    "sha256": "a4930baf022d08935f2ec12c268d9b457ce190be61bca06d338839fcdffe73f0"
+  },
+  {
+    "file": "primitive/canvas.js",
+    "url": "https://raw.githubusercontent.com/ondras/primitive.js/master/js/src/canvas.js",
+    "sha256": "893627056b632fa2be309ebe8e01fefa0feb90049eb2a0c187b59fcd46990897"
+  },
+  {
+    "file": "primitive/shape.js",
+    "url": "https://raw.githubusercontent.com/ondras/primitive.js/master/js/src/shape.js",
+    "sha256": "da88c2f8313e5bf13105974e324a13de8e8a8ad0f9b3a6b29d333ccc7d204927"
+  },
+  {
+    "file": "primitive/state.js",
+    "url": "https://raw.githubusercontent.com/ondras/primitive.js/master/js/src/state.js",
+    "sha256": "2044b30118baa6b7acb552be5d187707faff426d3d7f9ae554987aa79f73400c"
+  },
+  {
+    "file": "primitive/step.js",
+    "url": "https://raw.githubusercontent.com/ondras/primitive.js/master/js/src/step.js",
+    "sha256": "158d3e251fa575aa272a3d717e378923a9a66d72cf085eb0a9dde03fa9931c88"
+  },
+  {
+    "file": "primitive/util.js",
+    "url": "https://raw.githubusercontent.com/ondras/primitive.js/master/js/src/util.js",
+    "sha256": "90573fe9a7aa5861a952e3c073ffd71c59b29c2b8c044474245f8e6601a88b3d"
+  },
+  {
+    "file": "primitive/LICENSE",
+    "url": "https://raw.githubusercontent.com/ondras/primitive.js/master/license.txt",
+    "sha256": "f8a6071fc96add53b52b8625a393fd4caeff5aada2287a765b9da8533a6e7b61"
+  }
+]

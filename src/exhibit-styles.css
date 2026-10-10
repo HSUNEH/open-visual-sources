@@ -1,0 +1,30 @@
+/* Scene-specific final geometry follows the established scene stylesheet. */
+.stage.image-study{inset:165px 14% 365px}
+.stage.original-stage{inset:220px 12% 295px}
+.stage.original-fluid{inset:175px 12% 350px}
+.stage.original-lenia{inset:212px 12% 300px}
+.stage.original-origami{inset:220px 12% 290px}
+.stage.original-voice{inset:214px 12% 290px}
+@media(max-width:700px){
+  .stage.image-study{inset:184px 38px 400px 24px}
+  .stage.original-stage{inset:225px 32px 335px 20px}
+  .stage.original-fluid{inset:184px 32px 330px 20px}
+  .stage.original-voice{bottom:350px}
+}
+.immersive .stage.original-stage,.immersive .stage.image-study{inset:70px 10% 100px}
+.immersive .painting-picker{display:none}
+.primitive-vector,.primitive-vector svg{width:100%;height:100%;display:block}
+.primitive-vector svg{overflow:hidden}
+@media(max-width:700px){.study-result .study-label{top:-14px;bottom:auto}}
+.stage.physics-stage,.stage.sound-stage{top:235px}
+.physics-stage canvas{touch-action:none!important}
+.morph-stage svg{touch-action:none;cursor:grab;user-select:none}.morph-stage svg:active{cursor:grabbing}
+.stage.physics-stage{bottom:350px}
+@media(max-width:700px){.stage.physics-stage{bottom:325px}}
+.volume-object>span{top:0;bottom:auto!important;left:25%!important}
+.study-original{opacity:1;height:auto;max-width:190px;width:22%;flex-shrink:0}.study-original canvas{aspect-ratio:1;height:auto}.study-result{aspect-ratio:1;height:100%;width:auto;max-width:none}
+.scene-instruction{position:absolute;left:0;right:0;bottom:-35px;text-align:center;font-size:12px;line-height:1.6;margin:0;pointer-events:none}
+.stage.delaunay-stage{top:230px;bottom:340px}.delaunay-stage canvas{touch-action:none;cursor:grab}
+.stage.line-stage{top:224px;bottom:285px}
+.stage.volume-lab{inset:185px 13% 330px;gap:24px;align-items:center}.volume-object{height:100%;width:70%;position:relative}.volume-slice{width:28%;aspect-ratio:1;position:relative}.volume-object>div,.volume-slice>div{height:100%;width:100%}.volume-object>span,.volume-slice>span{position:absolute;bottom:0;left:0;font-size:11px}.volume-slice>span{bottom:-25px}.volume-lab .scene-instruction{bottom:-45px}
+@media(max-width:700px){.study-original{width:20%;max-width:65px}.study-result{max-width:240px}.stage.delaunay-stage{top:230px;bottom:345px}.scene-instruction{font-size:10px;bottom:-40px}.stage.line-stage{top:224px;bottom:320px}.stage.volume-lab{inset:190px 30px 360px 20px;gap:8px}.volume-object{width:67%;height:100%}.volume-slice{width:31%}.volume-object>span,.volume-slice>span{font-size:8px}.volume-lab .scene-instruction{bottom:-50px}.work:has(.volume-lab) .work-controls{bottom:78px;gap:5px}.work:has(.volume-lab) .work-caption{bottom:163px}}
