@@ -27,11 +27,14 @@
 .brush-actions{display:flex;gap:6px;margin-top:12px}
 .brush-actions .control-button{padding:8px 10px;min-height:36px}
 @media(max-width:700px){
-  .stage.nca-stage{inset:222px 36px 350px 22px}
+  .stage.nca-stage{inset:222px 36px 398px 22px}
   .nca-instruction{top:calc(100% + 6px);font-size:11px;white-space:nowrap}
   .nca-actions{gap:4px;margin-top:0}
   .nca-actions .control-button{padding:8px;font-size:10px;min-height:36px}
-  .work:has(.nca-stage) .nca-controls label{display:none}
+  .work:has(.nca-stage) .nca-controls>label{display:none}
+  .nca-speed{margin-bottom:7px}
+  .nca-speed input[type=range]{min-height:24px}
+  .work:has(.nca-stage) .work-caption{bottom:195px}
   .work:has(.nca-stage) .credit{max-width:300px}
   .stage.brush-stage{inset:228px 32px 355px 20px}
   .stage.pathtrace-stage{inset:228px 32px 320px 20px}

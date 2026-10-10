@@ -1,6 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
+import {createGrowthClock} from '../public/vendor/nca/clock.js';
+
+test('NCA growth speed is proportional and independent of screen refresh rate',()=>{
+  for(const hz of [30,60,120])for(const speed of [.25,.5,1,2,4]){
+    const clock=createGrowthClock();let total=0;
+    for(let i=0;i<=hz;i++)total+=clock.steps(i*1000/hz,speed);
+    assert.equal(total,Math.min(180*speed,12*hz));
+  }
+});
+
+test('NCA pause/reset discards elapsed time and slow frames cannot queue a burst',()=>{
+  const clock=createGrowthClock();clock.steps(0,4);
+  assert.equal(clock.steps(10000,4),12);
+  assert.equal(clock.steps(10000,4),0);
+  clock.reset();assert.equal(clock.steps(20000,.25),0);
+  assert.equal(clock.steps(20000+1000/60,.25),0);
+  assert.equal(clock.steps(20000+2000/60,.25),1);
+});
 
 test('NCA bundles three distinct original regeneration networks with valid quantized layers',async()=>{
   const weights=[];
