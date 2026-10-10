@@ -1,0 +1,107 @@
+[
+  {
+    "file": "vendor/brush/dist/brush.esm.js",
+    "url": "https://raw.githubusercontent.com/acamposuribe/p5.brush/0e85177597313b00905396e19efc7b1a5f134e8b/dist/brush.esm.js",
+    "sha256": "a5a2e1c782e287505ceb5724b428855d076ea873baa03b5cbf90aa0d4cea0391"
+  },
+  {
+    "file": "vendor/brush/LICENSE.md",
+    "url": "https://raw.githubusercontent.com/acamposuribe/p5.brush/0e85177597313b00905396e19efc7b1a5f134e8b/LICENSE.md",
+    "sha256": "cabbece1a276329fa28ab40f1c99af3af2b7852a329551a9a485b2199616583a"
+  },
+  {
+    "file": "vendor/pathtrace/Material_Roughness.html",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/Material_Roughness.html",
+    "sha256": "983627cfa39595f2cf7de1f9661528d0747c603356b963078e8388a8a918edbc"
+  },
+  {
+    "file": "vendor/pathtrace/LICENSE",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/LICENSE",
+    "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+  },
+  {
+    "file": "vendor/pathtrace/css/default.css",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/css/default.css",
+    "sha256": "f6f16f11ebd35b74d18f7655dd9de84495af80d49002bb73214800cdd46b9692"
+  },
+  {
+    "file": "vendor/pathtrace/js/three.module.min.js",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/js/three.module.min.js",
+    "sha256": "86bcee248b64f44bcfc23c331ae74619061957d59cab040171dcb6fb5900beb6"
+  },
+  {
+    "file": "vendor/pathtrace/js/three.core.min.js",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/js/three.core.min.js",
+    "sha256": "0e9dd2793e01d0d9eb4f2ab00b4ffcdd4488275ebebee5c31fa8d347bc29f0bf"
+  },
+  {
+    "file": "vendor/pathtrace/js/stats.module.js",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/js/stats.module.js",
+    "sha256": "2c71a2f70e89c69e46c2e285fb171bac3dcfd498a85400e94ad5aaf6044ffc06"
+  },
+  {
+    "file": "vendor/pathtrace/js/lil-gui.module.min.js",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/js/lil-gui.module.min.js",
+    "sha256": "5e31e7fc4d3a1268550b948463eabe06c7a6c03c158ccb99c78616d2c9682518"
+  },
+  {
+    "file": "vendor/pathtrace/js/MobileJoystickControls.js",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/js/MobileJoystickControls.js",
+    "sha256": "c88c090853e0fe19d504f373daa394abbdc40674ce7f649542589a5e39d47a8e"
+  },
+  {
+    "file": "vendor/pathtrace/js/PathTracingCommon.js",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/js/PathTracingCommon.js",
+    "sha256": "b015fc8094d84677013183d6dd8385fbcd0d4a3db879719cb60cbafe4e0d51bc"
+  },
+  {
+    "file": "vendor/pathtrace/js/InitCommon.js",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/js/InitCommon.js",
+    "sha256": "30db1feb8e10a587696179008eb4e2ff34497b26a85ebe6665b0072ca423495f"
+  },
+  {
+    "file": "vendor/pathtrace/js/Material_Roughness.js",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/js/Material_Roughness.js",
+    "sha256": "16e3e8b09749da766d65162e01899758920d24c594b16fddc84ceda722de5668"
+  },
+  {
+    "file": "vendor/pathtrace/textures/BlueNoise_R_128.png",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/textures/BlueNoise_R_128.png",
+    "sha256": "ff307104c853672241019e799f18aa6cf2ad95064e3fe7353e4aef78f6634c8c"
+  },
+  {
+    "file": "vendor/pathtrace/shaders/common_PathTracing_Vertex.glsl",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/shaders/common_PathTracing_Vertex.glsl",
+    "sha256": "c3d6e9dc6419a07a2d885aec4454fb1e3a83870b073d018fe6c088e864db9107"
+  },
+  {
+    "file": "vendor/pathtrace/shaders/Material_Roughness_Fragment.glsl",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/shaders/Material_Roughness_Fragment.glsl",
+    "sha256": "27ac008fe5a142c67b3c8602ede7e157cc1ce502438a209cee332c49726225cc"
+  },
+  {
+    "file": "vendor/pathtrace/shaders/ScreenCopy_Fragment.glsl",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/shaders/ScreenCopy_Fragment.glsl",
+    "sha256": "1dea0056795c136badfdacd4ad4ecc46cb6a1808c0e45dcc20fd375640d3ef8e"
+  },
+  {
+    "file": "vendor/pathtrace/shaders/ScreenOutput_Fragment.glsl",
+    "url": "https://raw.githubusercontent.com/erichlof/THREE.js-PathTracing-Renderer/a930973667faf4502b427a01dd338a19522c8f6c/shaders/ScreenOutput_Fragment.glsl",
+    "sha256": "45a8a94ea582d410ab2982f75bbb539de3cf015e6b32b1f3c656d5edd9a10d97"
+  },
+  {
+    "file": "vendor/pathtrace/LICENSE-three",
+    "url": "https://raw.githubusercontent.com/mrdoob/three.js/r185/LICENSE",
+    "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+  },
+  {
+    "file": "vendor/pathtrace/LICENSE-lil-gui",
+    "url": "https://raw.githubusercontent.com/georgealways/lil-gui/v0.17.0/LICENSE.md",
+    "sha256": "8cf4a9691239b14c715613ed8e41580d18ee433c862e263058393b35be6c8e53"
+  },
+  {
+    "file": "vendor/pathtrace/LICENSE-stats",
+    "url": "https://raw.githubusercontent.com/mrdoob/stats.js/r17/LICENSE",
+    "sha256": "9d23ed2d037cc4b97860dc61dc3787ca2c1faac8b11402064a6fa90e91360adc"
+  }
+]

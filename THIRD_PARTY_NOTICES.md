@@ -18,6 +18,8 @@ The original user CSV is retained unchanged. This document describes code actual
 | https://github.com/mapbox/webgl-wind | Mapbox / Vladimir Agafonkin | `public/vendor/fieldplay/LICENSE-webgl-wind` |
 | https://github.com/mxgmn/WaveFunctionCollapse | Maxim Gumin | `public/vendor/wfc/LICENSE` |
 | https://github.com/kchapelier/wavefunctioncollapse | Kévin Chapelier | `public/vendor/wfc/LICENSE-port` |
+| https://github.com/acamposuribe/p5.brush | Alejandro Campos Uribe | `public/vendor/brush/LICENSE.md` |
+| https://github.com/erichlof/THREE.js-PathTracing-Renderer | Erich Loftis | `public/vendor/pathtrace/LICENSE` (CC0) |
 
 The source files are unmodified. Wrappers live in `src/scenes/`, `public/workers/fish.js`, and `src/scenes/primitive-adapter.js`. Source URLs and local hashes are recorded in `public/vendor/manifest.json`.
 
@@ -60,6 +62,10 @@ The following public-domain reproductions are bundled from Wikimedia Commons. Th
 Sound exhibits are no longer listed or reachable in the exhibition. Their previous source snapshots and license notices are retained for provenance; the FFT/Tone scene is not bundled into the app.
 
 ## Additional visual engines
+
+p5.brush uses the original standalone WebGL2 engine at commit `0e85177597313b00905396e19efc7b1a5f134e8b` (MIT). The flower composition, freehand queue, palette and exhibition lifecycle are authored wrappers in `public/vendor/brush/exhibit.js` and `src/scenes/Brush.jsx`.
+
+Path Tracing uses the original Material Roughness scene, shaders, blue-noise texture and bundled dependencies at `a930973667faf4502b427a01dd338a19522c8f6c` (project CC0). Three.js, stats.js and lil-gui retain their embedded MIT notices; full license grants are also distributed beside them. The adapter exposes material presets and camera position without enabling pointer lock. Exact asset URLs and unchanged-byte hashes are in `public/vendor/brush-pathtrace-manifest.json`.
 
 `public/vendor/expansion-manifest.json` records pinned official compiled releases and source licenses. Sandspiel uses the official 39KB Rust/WASM cellular solver with still-air values supplied by our bridge, not the upstream GPU pressure simulation or its online gallery. Canvas rendering, brush controls and demonstration scenes are exhibition code. Field Play uses its original compiled WebGL engine and local parser/UI dependencies in an isolated frame; the exhibition hides upstream controls and supplies three equations, playback and speed controls. No analytics scripts, microphone activation, recording or uploads are invoked. Embedded dependency notices remain in the unchanged bundles.
 

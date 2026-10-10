@@ -22,7 +22,9 @@ const Volume = lazy(() => import('./scenes/Volume'));
 const Sand = lazy(() => import('./scenes/Sand'));
 const FieldPlay = lazy(() => import('./scenes/FieldPlay'));
 const WaveFunction = lazy(() => import('./scenes/WaveFunction'));
-const sceneMap = { fish: Drawing, landscape: Drawing, line: Drawing, cloud: Volume, sculpture: Spatial, bvh: Spatial, primitive: Interactive, thread: Interactive, delaunay: Interactive, physics: Kinetic, morph: Kinetic, fluid: Originals, origami: Originals, sand: Sand, fieldplay: FieldPlay, wfc: WaveFunction };
+const Brush = lazy(() => import('./scenes/Brush'));
+const PathTrace = lazy(() => import('./scenes/PathTrace'));
+const sceneMap = { fish: Drawing, landscape: Drawing, line: Drawing, cloud: Volume, sculpture: Spatial, bvh: Spatial, primitive: Interactive, thread: Interactive, delaunay: Interactive, physics: Kinetic, morph: Kinetic, fluid: Originals, origami: Originals, sand: Sand, fieldplay: FieldPlay, wfc: WaveFunction, brush: Brush, pathtrace: PathTrace };
 
 function initialLocation() {
   const id = location.hash.slice(1).split('/').pop();

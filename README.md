@@ -1,8 +1,8 @@
 # Open Visuals
 
-오픈소스의 결과물을 직접 보고 만지는 전체 화면 전시. 제공된 `index-opensource.csv`에서 고른 15개 항목과 요청한 Tileable Volume Noise 참고 작품을 네 테마로 묶었습니다. 총 16개이며 첫 화면은 fishdraw입니다. 사용자 요청으로 Lenia와 사운드 테마는 전시에서 제외했습니다. 이전 원본 스냅샷과 라이선스는 출처 보존을 위해 유지합니다.
+오픈소스의 결과물을 직접 보고 만지는 전체 화면 전시. 제공된 `index-opensource.csv`에서 고른 17개 항목과 요청한 Tileable Volume Noise 참고 작품을 네 테마로 묶었습니다. 총 18개이며 첫 화면은 fishdraw입니다. 사용자 요청으로 Lenia와 사운드 테마는 전시에서 제외했습니다. 이전 원본 스냅샷과 라이선스는 출처 보존을 위해 유지합니다.
 
-최근 추가: **Sandspiel, Field Play, Wave Function Collapse**. 원본 Rust/WASM 셀룰러 솔버, GPU 벡터장 엔진, WFC JavaScript 포트를 로컬에서 실행합니다. Primitive에는 고흐 〈아를의 침실〉, 모네 〈수련〉, 호쿠사이 〈큰 파도〉를, Threading에는 얼굴 중심으로 자른 모나리자·진주 귀걸이 소녀·고흐 자화상을 제공합니다.
+최근 추가: **p5.brush, Path Tracing**, 그리고 **Sandspiel, Field Play, Wave Function Collapse**. 원본 질감 붓, 재질별 광선 추적기, Rust/WASM 셀룰러 솔버, GPU 벡터장 엔진, WFC JavaScript 포트를 로컬에서 실행합니다. Primitive에는 고흐 〈아를의 침실〉, 모네 〈수련〉, 호쿠사이 〈큰 파도〉를, Threading에는 얼굴 중심으로 자른 모나리자·진주 귀걸이 소녀·고흐 자화상을 제공합니다.
 
 체험 개선: ln은 도시·구의 군집·산의 능선을 3초 주기로 바꾸며, 선 위에서 채취한 9,000개의 작은 입자가 1초 동안 흩어졌다 다음 선화로 모입니다. 다음 장면의 계산이 늦으면 현재 장면을 유지합니다. Fluid는 클릭 없이 마우스를 움직이면 색을 주입하며 터치는 기존 그리기 동작을 유지합니다. 페이지 진입 시 암호학적 난수 시드를 사용해 물고기와 산수가 다시 그려집니다. Primitive는 SVG, Threading은 1200px 선화로 출력합니다. Delaunay는 커서 미리보기와 점 추가·드래그·삭제, 영역/삼각형 비교를 지원합니다. Volume noise는 움직이는 밀도장의 입체와 같은 위치의 단면을 나란히 보여 줍니다. Motion에는 진자·도미노와 수동 형태 보간을 제공합니다.
 
@@ -51,11 +51,13 @@ npm run preview
 | 계속 생성 | Field Play | 원본 GPU 벡터장 엔진, 65,536개 입자 · 전시용 수식 3종 |
 | 계속 생성 | Wave Function Collapse | kchapelier 실제 JS 포트, mxgmn 원본 꽃밭·길·미로 표본. Worker에서 단계별 제약 전파 |
 | 직접 만지기 | WebGL Fluid Simulation | Pavel Dobryakov 원본 GPU 유체 솔버. 마우스 호버·터치 그리기·색 주입·소용돌이 |
+| 직접 만지기 | p5.brush | 원본 독립 실행형 WebGL2 붓 엔진. 수채화·연필·목탄, 5색 팔레트, 직접 그리기·PNG 저장 |
 | 직접 만지기 | Sandspiel | 원본 Rust/WASM 셀룰러 솔버. 8개 물질 붓, 모래와 얼음·작은 숲. 자체 Canvas 렌더러; GPU 바람/압력 솔버 제외 |
 | 직접 만지기 | Primitive | `ondras/primitive.js`의 실제 Shape/Step/Canvas/State 코드. 전시용 수명·스케줄 어댑터 추가 |
 | 직접 만지기 | Threading | 자체 작성한 탐욕적 실선 근사 체험. piellardj 원본 코드를 포함하지 않으며 원본 데모 링크 제공 |
 | 직접 만지기 | d3-delaunay | 실제 Delaunay / Voronoi 라이브러리 |
 | 3D 공간 | Origami Simulator | Amanda Ghassaei 원본 GPU 동적 솔버. 물폭탄·미우라·종이학 패턴과 접힘 조절 |
+| 3D 공간 | Path Tracing | Erich Loftis 원본 Material Roughness 장면·GLSL 광선 추적. 유리·금·구리 및 시점 이동 |
 | 3D 공간 | Three.js | Three.js + React Three Fiber로 작성한 회전 조각 |
 | 3D 공간 | Three Mesh BVH | 40,960개 삼각형의 자체 지형과 실제 가속 레이캐스트. 자동 스캔·포인터 탐사 |
 | 움직임과 패턴 | Matter.js | 실제 물리 엔진, 물체 생성·드래그·중력 조절 |
@@ -68,6 +70,8 @@ Threading과 Volume noise는 원본 프로젝트를 그대로 옮긴 전시가 �
 전시 작품이 중심이므로 **Motion의 테마 이동 피드백 + 직접 디자인한 얇은 전시 UI**를 선택했습니다. Three.js / React Three Fiber는 3D 작품 실행에 사용하고, 선화에는 SVG·Canvas를 유지합니다.
 
 ## 구성
+
+p5.brush·Path Tracing은 `node scripts/vendor-brush-pathtrace.mjs`로 고정 커밋의 원본을 받으며, `public/vendor/brush-pathtrace-manifest.json`에 해시를 보관합니다. 붓의 자동 꽃 그림과 조작부는 전시용 코드입니다. 광선 추적은 원본 재질 비교 장면을 사용하고 포인터 잠금을 비활성화했습니다. 두 엔진 모두 WebGL2가 필요합니다.
 
 `src/catalog.js`는 테마·작품·출처의 단일 목록입니다. `src/scenes/`는 매체별 지연 로딩 구현입니다. 현재 보이는 작품만 마운트되며 이전 작품의 Worker, 타이머, 물리 엔진, 오디오를 정리합니다. `prefers-reduced-motion`에서는 일시정지 상태로 시작합니다.
 

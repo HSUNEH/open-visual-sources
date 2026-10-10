@@ -8,6 +8,7 @@ const entries = {
   lenia: { title: 'Lenia', folder: 'lenia', file: 'Lenia.html' },
   origami: { title: 'Origami Simulator', folder: 'origami', file: 'index.html' },
   voice: { title: 'Pink Trombone', folder: 'pink-trombone', file: 'index.html' },
+  pathtrace: { title: 'Path Tracing', folder: 'pathtrace', file: 'Material_Roughness.html' },
 };
 
 // The upstream files remain untouched. This wrapper removes their site chrome,
@@ -41,6 +42,22 @@ const lifecycle = `
 `;
 
 const adapters = {
+  pathtrace: `
+    window.addEventListener('click', event => event.stopImmediatePropagation(), true);
+    const traceReady = setInterval(() => {
+      if(typeof pathTracingUniforms === 'undefined' || !pathTracingUniforms.uMaterialType || typeof renderer === 'undefined') return;
+      clearInterval(traceReady);
+      mouseControl = true; isPaused = true; mobileShowButtons = false; ableToEngagePointerLock = false;
+      pixelRatio = Math.min(1, 950 / innerWidth); onWindowResize();
+      material_TypeController.setValue('Transparent Refractive');
+      window.exhibit = {
+        pause(value) { setExhibitPaused(value); },
+        material(value) { material_TypeController.setValue(value); },
+        position(value) { cameraControlsObject.position.x = value; windowIsBeingResized = true; },
+      };
+    }, 80);
+    setTimeout(() => clearInterval(traceReady), 15000);
+  `,
   fluid: `
     config.DYE_RESOLUTION = 512; config.BLOOM_RESOLUTION = 128; config.SUNRAYS = false;
     config.BACK_COLOR = {r:22,g:46,b:42}; config.DENSITY_DISSIPATION = .5;
@@ -126,7 +143,7 @@ const adapters = {
   `,
 };
 
-function makeDocument(source, kind) {
+export function makeDocument(source, kind) {
   const entry = entries[kind];
   const base = new URL(assetUrl(`vendor/${entry.folder}/`), location.origin).href;
   const documentText = kind === 'fluid'
@@ -142,6 +159,7 @@ function makeDocument(source, kind) {
     ${kind === 'fluid' ? 'canvas{width:100%;height:100%;display:block;touch-action:none}' : ''}
     ${kind === 'lenia' ? 'body>*{visibility:hidden}body>#canvas1{visibility:visible!important;position:fixed!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%);width:min(90vw,90vh)!important;height:min(90vw,90vh)!important;border:0!important;border-radius:50%}' : ''}
     ${kind === 'origami' ? 'body>*:not(#threeContainer){display:none!important}#threeContainer{display:block!important;position:fixed!important;inset:0!important;width:100%!important;height:100%!important}#threeContainer canvas{width:100%!important;height:100%!important}' : ''}`;
+  if(kind === 'pathtrace') style.textContent += 'body>*:not(#container){display:none!important}#container{position:fixed;inset:0}#container>div{display:none!important}#container canvas{display:block;width:100%!important;height:100%!important;pointer-events:none}';
   doc.head.appendChild(style);
   const bridge = doc.createElement('script'); bridge.textContent = adapters[kind]; doc.body.appendChild(bridge);
   return '<!doctype html>' + doc.documentElement.outerHTML;
