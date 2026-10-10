@@ -1,10 +1,10 @@
 # Open Visuals
 
-오픈소스의 결과물을 직접 보고 만지는 전체 화면 전시. 제공된 `index-opensource.csv`에서 고른 13개 항목과 요청한 Tileable Volume Noise 참고 작품을 네 테마로 묶었습니다. Shan Shui Infinite를 포함해 총 14개입니다. 사운드 테마는 전시에서 제외했습니다.
+오픈소스의 결과물을 직접 보고 만지는 전체 화면 전시. 제공된 `index-opensource.csv`에서 고른 16개 항목과 요청한 Tileable Volume Noise 참고 작품을 네 테마로 묶었습니다. 총 17개이며 사운드 테마는 전시에서 제외했습니다.
 
-최근 추가: **Lenia, WebGL Fluid Simulation, Origami Simulator**. 단순 라이브러리 예제를 넘어 원본 시뮬레이터를 로컬에서 실행합니다. Primitive에는 고흐 〈아를의 침실〉, 모네 〈수련〉, 호쿠사이 〈큰 파도〉를, Threading에는 얼굴 중심으로 자른 모나리자·진주 귀걸이 소녀·고흐 자화상을 제공합니다.
+최근 추가: **Sandspiel, Field Play, Wave Function Collapse**. 원본 Rust/WASM 셀룰러 솔버, GPU 벡터장 엔진, WFC JavaScript 포트를 로컬에서 실행합니다. Primitive에는 고흐 〈아를의 침실〉, 모네 〈수련〉, 호쿠사이 〈큰 파도〉를, Threading에는 얼굴 중심으로 자른 모나리자·진주 귀걸이 소녀·고흐 자화상을 제공합니다.
 
-체험 개선: ln은 도시·구의 군집·산의 능선을 3초 주기로 바꾸며, 0.5초 동안 선 조각이 흩어졌다 모입니다. 다음 장면의 계산이 늦으면 완성된 현재 장면을 유지합니다. 페이지 진입 시 암호학적 난수 시드를 사용해 물고기와 산수가 다시 그려집니다. Lenia의 자극은 세포량을 유지한 채 실제 몸체를 휘게 하며 결과는 원본 솔버가 계산합니다. Primitive는 SVG, Threading은 1200px 선화로 출력합니다. Delaunay는 커서 미리보기와 점 추가·드래그·삭제, 영역/삼각형 비교를 지원합니다. Volume noise는 움직이는 밀도장의 입체와 같은 위치의 단면을 나란히 보여 줍니다. Motion에는 진자·도미노와 수동 형태 보간을 제공합니다.
+체험 개선: ln은 도시·구의 군집·산의 능선을 3초 주기로 바꾸며, 선 위에서 채취한 9,000개의 작은 입자가 1초 동안 흩어졌다 다음 선화로 모입니다. 다음 장면의 계산이 늦으면 현재 장면을 유지합니다. Fluid는 클릭 없이 마우스를 움직이면 색을 주입하며 터치는 기존 그리기 동작을 유지합니다. 페이지 진입 시 암호학적 난수 시드를 사용해 물고기와 산수가 다시 그려집니다. Lenia의 자극은 세포량을 유지한 채 실제 몸체를 휘게 하며 결과는 원본 솔버가 계산합니다. Primitive는 SVG, Threading은 1200px 선화로 출력합니다. Delaunay는 커서 미리보기와 점 추가·드래그·삭제, 영역/삼각형 비교를 지원합니다. Volume noise는 움직이는 밀도장의 입체와 같은 위치의 단면을 나란히 보여 줍니다. Motion에는 진자·도미노와 수동 형태 보간을 제공합니다.
 
 ## 실행
 
@@ -48,7 +48,10 @@ npm run preview
 | 계속 생성 | Shan Shui Infinite | Lingdong Huang 원본 HTML/JS, 별도 프레임 안에서 자동 이동, SVG 저장 |
 | 계속 생성 | ln | `@lnjs/core` 실제 브라우저 포트, Worker 은선 제거 |
 | 계속 생성 | Volume noise | TileableVolumeNoise 원리를 참고한 자체 GLSL 레이마칭. 원본 C++는 실행하지 않음 |
-| 직접 만지기 | WebGL Fluid Simulation | Pavel Dobryakov 원본 GPU 유체 솔버. 드래그·색 주입·소용돌이 |
+| 계속 생성 | Field Play | 원본 GPU 벡터장 엔진, 65,536개 입자 · 전시용 수식 3종 |
+| 계속 생성 | Wave Function Collapse | kchapelier 실제 JS 포트, mxgmn 원본 꽃밭·길·미로 표본. Worker에서 단계별 제약 전파 |
+| 직접 만지기 | WebGL Fluid Simulation | Pavel Dobryakov 원본 GPU 유체 솔버. 마우스 호버·터치 그리기·색 주입·소용돌이 |
+| 직접 만지기 | Sandspiel | 원본 Rust/WASM 셀룰러 솔버. 8개 물질 붓, 모래와 얼음·작은 숲. 자체 Canvas 렌더러; GPU 바람/압력 솔버 제외 |
 | 직접 만지기 | Primitive | `ondras/primitive.js`의 실제 Shape/Step/Canvas/State 코드. 전시용 수명·스케줄 어댑터 추가 |
 | 직접 만지기 | Threading | 자체 작성한 탐욕적 실선 근사 체험. piellardj 원본 코드를 포함하지 않으며 원본 데모 링크 제공 |
 | 직접 만지기 | d3-delaunay | 실제 Delaunay / Voronoi 라이브러리 |
@@ -69,6 +72,8 @@ Threading과 Volume noise는 원본 프로젝트를 그대로 옮긴 전시가 �
 `src/catalog.js`는 테마·작품·출처의 단일 목록입니다. `src/scenes/`는 매체별 지연 로딩 구현입니다. 현재 보이는 작품만 마운트되며 이전 작품의 Worker, 타이머, 물리 엔진, 오디오를 정리합니다. `prefers-reduced-motion`에서는 일시정지 상태로 시작합니다.
 
 `public/vendor/`에는 수정하지 않은 upstream 소스와 저작권·라이선스 원문이 있습니다. `manifest.json`에 다운로드 출처와 SHA-256을 기록했습니다. 초기 vendoring을 재현하거나 의도적으로 갱신할 때 `npm run vendor`를 사용합니다. 이 명령은 upstream의 현재 master를 받으므로 업데이트 시 변경 내용을 검토해야 합니다.
+
+Sandspiel·Field Play·WFC 표본은 `node scripts/vendor-expansion.mjs`로 고정된 커밋에서 받습니다. `public/vendor/expansion-manifest.json`이 URL과 SHA-256을 기록합니다. Field Play의 원본 사이트 UI·분석 태그는 로딩하지 않으며 마이크/녹음 기능을 노출하거나 시작하지 않습니다. WFC는 성공하면 멈추고 다시 생성 버튼으로 재시도합니다.
 
 추가된 네 시뮬레이터와 명화는 `npm run vendor:exhibits`로 다운로드하며, `public/vendor/exhibits-manifest.json`에 출처와 해시를 기록합니다. 기본적으로 로컬 스냅샷을 유지하고 `-- --refresh`를 지정해야 새로 받습니다. 이미지의 CC0 근거·미술관 레코드·Wikimedia 배포 경로는 `public/artworks/`에 보관합니다.
 

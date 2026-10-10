@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Download } from 'lucide-react';
 import { canvasContext, saveText, useLoop } from './shared';
 import { assetUrl } from '../asset-url';
-import { advanceLineTransition, fragmentLineArtwork } from './line-transition';
+import { advanceLineTransition, sampleLineArtwork, lineParticle } from './line-transition';
 
 function Fish({ paused, seed, ink, reduced }) {
   const canvas = useRef(null);
@@ -81,29 +81,31 @@ function Landscape({ paused, seed }) {
   return <><div className="stage landscape-stage"><iframe key={seed} ref={frame} src={`${assetUrl('vendor/shan-shui.html')}?seed=openvisuals${seed}`} title="Shan Shui Infinite 원본 생성 산수화" onLoad={configure}/>{!ready && <div className="scene-message">산과 나무를 그리고 있습니다</div>}</div><div className="work-controls"><button className="control-button" disabled={!ready} onClick={() => saveText(frame.current.contentDocument.getElementById('BG').innerHTML, `shan-shui-${seed}.svg`)}><Download size={14}/>이 풍경 저장</button><p className="control-note">산 너머 또 다른 산.<br/>풍경은 천천히 이어집니다.</p></div></>;
 }
 
-function Line({ seed, paused, reduced }) {
+function Line({ seed, paused, reduced, ink }) {
   const [svg, setSvg] = useState('');
   const [error, setError] = useState('');
   const [mode, setMode] = useState('city');
   const [edition, setEdition] = useState(1);
   const host = useRef(null), artwork = useRef(null), pending = useRef(null);
+  const dust = useRef(null), flight = useRef(null);
   const timeline = useRef({phase:'hold',elapsed:0});
   const workerRef = useRef(null), busy = useRef(false), sequence = useRef(0);
   function show(data) {
-    const prepared = fragmentLineArtwork(data.svg);
-    host.current.innerHTML = prepared.markup;
-    artwork.current = {...prepared, nodes:[...host.current.querySelectorAll('[data-fragment]')]};
+    host.current.innerHTML = data.svg;
+    artwork.current = data;
     setSvg(data.svg); setEdition(data.edition);
   }
   function generate() { if (!busy.current && workerRef.current) { busy.current = true; workerRef.current.postMessage({ seed: seed + sequence.current++ * 7919, mode }); } }
   useEffect(() => {
     const worker = new Worker(new URL('./line.worker.js', import.meta.url), { type: 'module' });
     workerRef.current = worker; busy.current = false; pending.current = null; artwork.current = null;
-    host.current.innerHTML = ''; setSvg(''); setError(''); timeline.current = {phase:'hold',elapsed:0};
+    host.current.innerHTML = ''; host.current.style.opacity = '1'; flight.current = null;
+    setSvg(''); setError(''); timeline.current = {phase:'hold',elapsed:0};
     worker.onmessage = event => {
       busy.current = false;
       if (event.data.error) { setError(event.data.error); return; }
-      const data = {svg:event.data.svg.replace(/stroke="black"/g, 'stroke="currentColor"').replace('<svg ', '<svg viewBox="0 0 1000 630" '),edition:sequence.current};
+      const svg = event.data.svg.replace(/stroke="black"/g, 'stroke="currentColor"').replace('<svg ', '<svg viewBox="0 0 1000 630" ');
+      const data = {svg, points:sampleLineArtwork(svg), edition:sequence.current};
       if (!artwork.current) { show(data); generate(); }
       else pending.current = data;
     };
@@ -114,15 +116,28 @@ function Line({ seed, paused, reduced }) {
   useLoop((_, delta) => {
     if (!artwork.current) return;
     const frame = advanceLineTransition(timeline.current, delta, !!pending.current, reduced);
+    if (timeline.current.phase === 'out' && !flight.current) flight.current = {from:artwork.current.points,to:pending.current.points};
     if (frame.swap) { show(pending.current); pending.current = null; generate(); }
     host.current.dataset.phase = timeline.current.phase;
-    artwork.current.nodes.forEach((node,i)=>{
-      const f=artwork.current.fragments[i],a=frame.amount;
-      node.setAttribute('transform',`translate(${f.dx*a} ${f.dy*a}) rotate(${f.angle*a} ${f.x} ${f.y})`);
-      node.setAttribute('opacity',String(1-a));
-    });
+    const surface = canvasContext(dust.current);
+    if (!surface) return;
+    const {ctx,width,height}=surface;
+    ctx.clearRect(0,0,width,height);
+    if(timeline.current.phase==='hold') {flight.current=null;host.current.style.opacity='1';return;}
+    const p=frame.progress,alpha=Math.min(1,p/.1,(1-p)/.12);
+    host.current.style.opacity=String(1-alpha);
+    if(!flight.current) return;
+    const scale=Math.min(width/1000,height/630);
+    ctx.save();ctx.translate((width-1000*scale)/2,(height+630*scale)/2);ctx.scale(scale,-scale);
+    ctx.fillStyle=ink;ctx.globalAlpha=alpha*.82;ctx.beginPath();
+    const {from,to}=flight.current;
+    for(let i=0;i<Math.min(from.length,to.length)/2;i++) {
+      const [x,y]=lineParticle(from,to,i,p),radius=.6+(i%3)*.13;
+      ctx.moveTo(x+radius,y);ctx.arc(x,y,radius,0,Math.PI*2);
+    }
+    ctx.fill();ctx.restore();
   }, paused);
-  return <><div className="stage line-stage"><div ref={host} className="line-fragments" role="img" aria-label="흩어졌다 모이는 은선 제거 선화" style={{width:'100%',height:'100%'}}/>{!svg && <div className="scene-message">{error || '보이는 선과 가려진 선을 계산하고 있습니다'}</div>}</div><div className="work-controls original-presets"><div className="preset-options">{[['city','층층의 도시'],['orbits','구의 군집'],['terrain','산의 능선']].map(([id,label])=><button key={id} className={`control-button ${mode===id?'active':''}`} aria-pressed={mode===id} onClick={()=>setMode(id)}>{label}</button>)}</div></div><div className="work-controls"><button className="control-button" disabled={!svg} onClick={() => saveText(svg.replaceAll('currentColor', '#383254'), `ln-${mode}-${seed}-${edition}.svg`)}><Download size={14}/>선화 저장</button><p className="control-note">{paused ? '자동 생성 일시정지' : '3초마다 새로운 장면'} · #{edition}<br/>{reduced ? '동작 줄이기 · 전환 효과 생략' : '0.5초 동안 흩어졌다 다시 모이는 선.'}</p>{error && <p role="alert">{error}</p>}</div></>;
+  return <><div className="stage line-stage"><div ref={host} role="img" aria-label="작은 입자로 흩어졌다 모이는 은선 제거 선화" style={{width:'100%',height:'100%'}}/><canvas ref={dust} aria-hidden="true" style={{position:'absolute',inset:0,width:'100%',height:'100%',pointerEvents:'none'}}/>{!svg && <div className="scene-message">{error || '보이는 선과 가려진 선을 계산하고 있습니다'}</div>}</div><div className="work-controls original-presets"><div className="preset-options">{[['city','층층의 도시'],['orbits','구의 군집'],['terrain','산의 능선']].map(([id,label])=><button key={id} className={`control-button ${mode===id?'active':''}`} aria-pressed={mode===id} onClick={()=>setMode(id)}>{label}</button>)}</div></div><div className="work-controls"><button className="control-button" disabled={!svg} onClick={() => saveText(svg.replaceAll('currentColor', '#383254'), `ln-${mode}-${seed}-${edition}.svg`)}><Download size={14}/>선화 저장</button><p className="control-note">{paused ? '자동 생성 일시정지' : '3초마다 새로운 장면'} · #{edition}<br/>{reduced ? '동작 줄이기 · 전환 효과 생략' : '1초 동안 작은 입자로 흩어졌다 모이는 선.'}</p>{error && <p role="alert">{error}</p>}</div></>;
 }
 
 export default function Drawing(props) { return props.kind === 'fish' ? <Fish {...props}/> : props.kind === 'landscape' ? <Landscape {...props}/> : <Line {...props}/>; }

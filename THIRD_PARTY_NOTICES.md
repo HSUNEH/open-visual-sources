@@ -13,6 +13,11 @@ The original user CSV is retained unchanged. This document describes code actual
 | https://github.com/Chakazul/Lenia | Bert Chan / Chakazul | `public/vendor/lenia/LICENSE.md` |
 | https://github.com/amandaghassaei/OrigamiSimulator | Amanda Ghassaei and contributors | `public/vendor/origami/LICENSE` |
 | https://dood.al/pinktrombone/ | Neil Thapen | MIT notice retained inside `public/vendor/pink-trombone/index.html` |
+| https://github.com/MaxBittker/sandspiel | Max Bittker | `public/vendor/sandspiel/LICENSE` |
+| https://github.com/anvaka/fieldplay | Andrei Kashcha | `public/vendor/fieldplay/LICENSE` |
+| https://github.com/mapbox/webgl-wind | Mapbox / Vladimir Agafonkin | `public/vendor/fieldplay/LICENSE-webgl-wind` |
+| https://github.com/mxgmn/WaveFunctionCollapse | Maxim Gumin | `public/vendor/wfc/LICENSE` |
+| https://github.com/kchapelier/wavefunctioncollapse | Kévin Chapelier | `public/vendor/wfc/LICENSE-port` |
 
 The source files are unmodified. Wrappers live in `src/scenes/`, `public/workers/fish.js`, and `src/scenes/primitive-adapter.js`. Source URLs and local hashes are recorded in `public/vendor/manifest.json`.
 
@@ -53,3 +58,9 @@ The following public-domain reproductions are bundled from Wikimedia Commons. Th
 - Vincent van Gogh, *Self-Portrait* — [Google Art Project reproduction](https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg), public domain / PD-Art.
 
 Sound exhibits are no longer listed or reachable in the exhibition. Their previous source snapshots and license notices are retained for provenance; the FFT/Tone scene is not bundled into the app.
+
+## Additional visual engines
+
+`public/vendor/expansion-manifest.json` records pinned official compiled releases and source licenses. Sandspiel uses the official 39KB Rust/WASM cellular solver with still-air values supplied by our bridge, not the upstream GPU pressure simulation or its online gallery. Canvas rendering, brush controls and demonstration scenes are exhibition code. Field Play uses its original compiled WebGL engine and local parser/UI dependencies in an isolated frame; the exhibition hides upstream controls and supplies three equations, playback and speed controls. No analytics scripts, microphone activation, recording or uploads are invoked. Embedded dependency notices remain in the unchanged bundles.
+
+Wave Function Collapse uses the `wavefunctioncollapse` 2.1.0 JavaScript port (MIT), not the original C# binary. Flowers, Paths and Maze are original samples from mxgmn's MIT repository, preserved unchanged. Their source URLs and hashes are in the expansion manifest.

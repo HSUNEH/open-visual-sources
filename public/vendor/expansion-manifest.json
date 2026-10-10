@@ -1,0 +1,67 @@
+[
+  {
+    "file": "vendor/sandspiel/sandspiel.wasm",
+    "url": "https://raw.githubusercontent.com/MaxBittker/sandspiel/24a63c60428cae13714946118f025d5d1484b344/354dd2ae780207d6d78d.module.wasm",
+    "sha256": "d2b16bbad5997b2be8d53df4644509fa12ff65d84e51274c165e6aa7a90e2809"
+  },
+  {
+    "file": "vendor/sandspiel/LICENSE",
+    "url": "https://raw.githubusercontent.com/MaxBittker/sandspiel/9936e06b07a583aedfba9589c0cead2917f405fb/LICENSE",
+    "sha256": "ab9478d91e76f13a998bce8e0f87806b36900692c4f4ae6578965a7114252e88"
+  },
+  {
+    "file": "vendor/fieldplay/assets/index-YF36ta8P.js",
+    "url": "https://raw.githubusercontent.com/anvaka/fieldplay/2f0643ce57f36b60559c554dca608235524e5c1a/assets/index-YF36ta8P.js",
+    "sha256": "ebadef424f5a42f5f3991a5faccfa249f076945eafa25f0759d2fd51c66164ec"
+  },
+  {
+    "file": "vendor/fieldplay/assets/vueApp-CW4N62Qh.js",
+    "url": "https://raw.githubusercontent.com/anvaka/fieldplay/2f0643ce57f36b60559c554dca608235524e5c1a/assets/vueApp-CW4N62Qh.js",
+    "sha256": "743100d3732c76a05bbc4b27cc6edcac230f613822c7e9d61728f65ab432833a"
+  },
+  {
+    "file": "vendor/fieldplay/assets/vueApp-W5cJhiE8.css",
+    "url": "https://raw.githubusercontent.com/anvaka/fieldplay/2f0643ce57f36b60559c554dca608235524e5c1a/assets/vueApp-W5cJhiE8.css",
+    "sha256": "34a752f3d23446af10432dc6ee7f967d9eb032d6589415b76129c751353deed0"
+  },
+  {
+    "file": "vendor/fieldplay/assets/parser-DwgkW_yS.js",
+    "url": "https://raw.githubusercontent.com/anvaka/fieldplay/2f0643ce57f36b60559c554dca608235524e5c1a/assets/parser-DwgkW_yS.js",
+    "sha256": "dfb33634816eb21ff2a8d59dab7a5ca04fe5e5735c1ca2cd826331e8433d26aa"
+  },
+  {
+    "file": "vendor/fieldplay/assets/CCapture.all.min-D30alvaS.js",
+    "url": "https://raw.githubusercontent.com/anvaka/fieldplay/2f0643ce57f36b60559c554dca608235524e5c1a/assets/CCapture.all.min-D30alvaS.js",
+    "sha256": "7545e5f23ede0dd86e0a0ea0722ed416b6c759b49e34283edc480f10f30a952d"
+  },
+  {
+    "file": "vendor/fieldplay/LICENSE",
+    "url": "https://raw.githubusercontent.com/anvaka/fieldplay/11d602df5338e7bd80b10c01334f60594c396539/LICENSE",
+    "sha256": "eacf0841fb89097ba61900a4d14b38a2ccfdea20853036ffae69b92dba910ed1"
+  },
+  {
+    "file": "vendor/fieldplay/LICENSE-webgl-wind",
+    "url": "https://raw.githubusercontent.com/mapbox/webgl-wind/b1f6468d90d2f39763a8795a5042f316a32ff3c8/LICENSE",
+    "sha256": "cd661c432ea8243974e6fde6fc433ebee3e96525ca8b66321b9d9971674ede60"
+  },
+  {
+    "file": "vendor/wfc/samples/Flowers.png",
+    "url": "https://raw.githubusercontent.com/mxgmn/WaveFunctionCollapse/de7d22e705e816b62b4d613199d0463820fcaef3/samples/Flowers.png",
+    "sha256": "1915a060c989a80a3aa7b252966b14bd1ba14906982d9619a4510ee14b43e0b8"
+  },
+  {
+    "file": "vendor/wfc/samples/Paths.png",
+    "url": "https://raw.githubusercontent.com/mxgmn/WaveFunctionCollapse/de7d22e705e816b62b4d613199d0463820fcaef3/samples/Paths.png",
+    "sha256": "6320de3cc94be1f743b396509b6b8f5ea08ec1e6860ec043ddb344bb27ad3cc7"
+  },
+  {
+    "file": "vendor/wfc/samples/Maze.png",
+    "url": "https://raw.githubusercontent.com/mxgmn/WaveFunctionCollapse/de7d22e705e816b62b4d613199d0463820fcaef3/samples/Maze.png",
+    "sha256": "1a72e529d7b4448cd8c7d3a4d7d01a513adb1f00e60ffd5c9a82a391dfd522e6"
+  },
+  {
+    "file": "vendor/wfc/LICENSE",
+    "url": "https://raw.githubusercontent.com/mxgmn/WaveFunctionCollapse/de7d22e705e816b62b4d613199d0463820fcaef3/LICENSE",
+    "sha256": "c3e9f0d9aceebfe7b2afd99339f7df2689cbfaf9df20bb10e3f578d7e6b3841f"
+  }
+]

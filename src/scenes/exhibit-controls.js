@@ -1,4 +1,24 @@
 // These small adapters are serialized into the unmodified upstream frames.
+export function enableFluidHover(canvas, pointer, start, stop, isPaused) {
+  const enter = event => {
+    if (event.pointerType && event.pointerType !== 'mouse') return;
+    if (isPaused() || pointer.down) return;
+    const rect=canvas.getBoundingClientRect();
+    start(pointer,-1,(event.clientX-rect.left)*canvas.width/rect.width,(event.clientY-rect.top)*canvas.height/rect.height);
+  };
+  const move = event => { if(isPaused()) stop(pointer); else enter(event); };
+  const leave = () => { stop(pointer); pointer.moved=false; };
+  canvas.addEventListener('pointerenter',enter);
+  // Arm the upstream mousemove handler, without updating its velocity twice.
+  canvas.addEventListener('mousemove',move,true);
+  canvas.addEventListener('pointerleave',leave);
+  return () => {
+    canvas.removeEventListener('pointerenter',enter);
+    canvas.removeEventListener('mousemove',move,true);
+    canvas.removeEventListener('pointerleave',leave);
+  };
+}
+
 export function applyVowel(tract, ui, index) {
   const vowels = [[12.9, 2.43, 1.5], [25, 2.2, 1.5], [18, 2.15, .55]];
   const [position, diameter, lips] = vowels[index] || vowels[0];

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Slider } from './shared';
-import { applyVowel, perturbLenia } from './exhibit-controls';
+import { applyVowel, perturbLenia, enableFluidHover } from './exhibit-controls';
 import { assetUrl } from '../asset-url';
 
 const entries = {
@@ -46,6 +46,7 @@ const adapters = {
     config.BACK_COLOR = {r:22,g:46,b:42}; config.DENSITY_DISSIPATION = .5;
     config.CURL = 45; config.VELOCITY_DISSIPATION = 1.475;
     initFramebuffers(); updateKeywords(); multipleSplats(7);
+    (${enableFluidHover.toString()})(canvas, pointers[0], updatePointerDownData, updatePointerUpData, () => window.exhibitPaused);
     window.exhibit = {
       pause(value) { config.PAUSED = value; setExhibitPaused(value); },
       burst() { multipleSplats(10); render(null); },
@@ -218,7 +219,7 @@ export default function Originals({ kind, paused }) {
       {kind === 'fluid' && <button className="control-button" disabled={!ready} onClick={() => api()?.burst()}>색 폭발시키기</button>}
       {kind === 'lenia' && <button className="control-button" disabled={!ready || stimulusBusy} onClick={stimulate}>몸체에 자극 주기</button>}
       {kind === 'voice' && <button className={`control-button ${playing ? 'active' : ''}`} disabled={!ready || paused} onClick={toggleVoice}>{playing ? '발성 멈추기' : '발성 시작'}</button>}
-      {kind !== 'lenia' && <p className="control-note">{kind === 'fluid' ? '화면을 휘저으면 물감이 흐릅니다. 실제 유체 방정식을 GPU로 풉니다.' : kind === 'origami' ? '슬라이더로 펼치고 접기 · 드래그로 회전. 종이의 변형을 실제로 계산합니다.' : '발성을 켠 뒤 혀와 입안을 드래그하세요. 녹음 없이 성도를 계산해 만든 목소리입니다.'}</p>}
+      {kind !== 'lenia' && <p className="control-note">{kind === 'fluid' ? '클릭 없이 커서를 움직여 보세요. 터치 화면에서는 손가락으로 물감을 흐르게 합니다.' : kind === 'origami' ? '슬라이더로 펼치고 접기 · 드래그로 회전. 종이의 변형을 실제로 계산합니다.' : '발성을 켠 뒤 혀와 입안을 드래그하세요. 녹음 없이 성도를 계산해 만든 목소리입니다.'}</p>}
     </div>
   </>;
 }

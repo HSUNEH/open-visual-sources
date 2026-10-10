@@ -10,6 +10,7 @@ import { themes, totalWorks } from './catalog';
 import './style.css';
 import './scene-styles.css';
 import './exhibit-styles.css';
+import './expansion-styles.css';
 
 const Drawing = lazy(() => import('./scenes/Drawing'));
 const Spatial = lazy(() => import('./scenes/Spatial'));
@@ -17,7 +18,10 @@ const Interactive = lazy(() => import('./scenes/Interactive'));
 const Kinetic = lazy(() => import('./scenes/Kinetic'));
 const Originals = lazy(() => import('./scenes/Originals'));
 const Volume = lazy(() => import('./scenes/Volume'));
-const sceneMap = { fish: Drawing, landscape: Drawing, line: Drawing, cloud: Volume, sculpture: Spatial, bvh: Spatial, primitive: Interactive, thread: Interactive, delaunay: Interactive, physics: Kinetic, morph: Kinetic, fluid: Originals, lenia: Originals, origami: Originals };
+const Sand = lazy(() => import('./scenes/Sand'));
+const FieldPlay = lazy(() => import('./scenes/FieldPlay'));
+const WaveFunction = lazy(() => import('./scenes/WaveFunction'));
+const sceneMap = { fish: Drawing, landscape: Drawing, line: Drawing, cloud: Volume, sculpture: Spatial, bvh: Spatial, primitive: Interactive, thread: Interactive, delaunay: Interactive, physics: Kinetic, morph: Kinetic, fluid: Originals, lenia: Originals, origami: Originals, sand: Sand, fieldplay: FieldPlay, wfc: WaveFunction };
 
 function initialLocation() {
   const id = location.hash.slice(1).split('/').pop();
