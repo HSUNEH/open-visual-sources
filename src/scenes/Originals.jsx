@@ -29,7 +29,7 @@ const lifecycle = `
   window.addEventListener('wheel', event => {
     if(event.ctrlKey) return;
     event.preventDefault(); event.stopImmediatePropagation();
-    parent.dispatchEvent(new CustomEvent('exhibit-wheel', {detail:{x:event.deltaX,y:event.deltaY}}));
+    parent.dispatchEvent(new CustomEvent('exhibit-wheel', {detail:{x:event.deltaX,y:event.deltaY,mode:event.deltaMode,shift:event.shiftKey}}));
   }, {capture:true,passive:false});
   window.addEventListener('keydown', event => {
     if(/INPUT|TEXTAREA|SELECT/.test(event.target.tagName)) return;

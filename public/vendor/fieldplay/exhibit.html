@@ -5,7 +5,7 @@
 </head><body><canvas id="scene" aria-label="벡터장을 따라 흐르는 입자"></canvas><div id="app"></div>
 <script>
   // Exhibition shell only: no upstream analytics, microphone UI or site chrome.
-  window.addEventListener('wheel',event=>{if(event.ctrlKey)return;event.preventDefault();event.stopImmediatePropagation();parent.dispatchEvent(new CustomEvent('exhibit-wheel',{detail:{x:event.deltaX,y:event.deltaY}}));},{capture:true,passive:false});
+  window.addEventListener('wheel',event=>{if(event.ctrlKey)return;event.preventDefault();event.stopImmediatePropagation();parent.dispatchEvent(new CustomEvent('exhibit-wheel',{detail:{x:event.deltaX,y:event.deltaY,mode:event.deltaMode,shift:event.shiftKey}}));},{capture:true,passive:false});
   window.addEventListener('keydown',event=>{if(['ArrowDown','ArrowUp','ArrowLeft','ArrowRight','Escape',' '].includes(event.key)){event.preventDefault();event.stopImmediatePropagation();parent.dispatchEvent(new KeyboardEvent('keydown',{key:event.key,code:event.code}));}},true);
 </script>
 <script type="module" src="./assets/index-YF36ta8P.js"></script>

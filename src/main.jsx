@@ -7,6 +7,7 @@ import '@fontsource/manrope/500.css';
 import '@fontsource/manrope/600.css';
 import '@fontsource/manrope/700.css';
 import { themes, totalWorks } from './catalog';
+import { createWheelGesture, wheelIntent } from './gallery-wheel';
 import './style.css';
 import './scene-styles.css';
 import './exhibit-styles.css';
@@ -21,7 +22,7 @@ const Volume = lazy(() => import('./scenes/Volume'));
 const Sand = lazy(() => import('./scenes/Sand'));
 const FieldPlay = lazy(() => import('./scenes/FieldPlay'));
 const WaveFunction = lazy(() => import('./scenes/WaveFunction'));
-const sceneMap = { fish: Drawing, landscape: Drawing, line: Drawing, cloud: Volume, sculpture: Spatial, bvh: Spatial, primitive: Interactive, thread: Interactive, delaunay: Interactive, physics: Kinetic, morph: Kinetic, fluid: Originals, lenia: Originals, origami: Originals, sand: Sand, fieldplay: FieldPlay, wfc: WaveFunction };
+const sceneMap = { fish: Drawing, landscape: Drawing, line: Drawing, cloud: Volume, sculpture: Spatial, bvh: Spatial, primitive: Interactive, thread: Interactive, delaunay: Interactive, physics: Kinetic, morph: Kinetic, fluid: Originals, origami: Originals, sand: Sand, fieldplay: FieldPlay, wfc: WaveFunction };
 
 function initialLocation() {
   const id = location.hash.slice(1).split('/').pop();
@@ -58,7 +59,7 @@ function App() {
   const horizontal = useRef(null);
   const columns = useRef([]);
   const modal = useRef(null);
-  const frameWheel = useRef({ time: 0, x: 0, y: 0 });
+  const wheelGesture = useRef(createWheelGesture());
   const theme = themes[themeIndex];
   const workIndex = positions[themeIndex];
   const item = theme.items[workIndex];
@@ -100,18 +101,21 @@ function App() {
     window.addEventListener('hashchange', onHash);
     window.addEventListener('resize', onResize);
     window.addEventListener('keydown', onKey);
-    const onFrameWheel = event => {
+    const moveFromWheel = detail => {
       if (dialog) return;
-      const wheel = frameWheel.current, now = performance.now();
-      if (now - wheel.time < 750) return;
-      wheel.x += event.detail.x; wheel.y += event.detail.y;
-      if (Math.max(Math.abs(wheel.x), Math.abs(wheel.y)) < 60) return;
-      if (Math.abs(wheel.x) > Math.abs(wheel.y)) navigate(themeIndex + Math.sign(wheel.x));
-      else navigate(themeIndex, workIndex + Math.sign(wheel.y));
-      wheel.time = now; wheel.x = wheel.y = 0;
+      const intent = wheelIntent(wheelGesture.current, detail, performance.now(), horizontal.current.clientWidth, horizontal.current.clientHeight);
+      if (intent?.axis === 'theme') navigate(themeIndex + intent.direction);
+      else if (intent) navigate(themeIndex, workIndex + intent.direction);
     };
+    const onFrameWheel = event => moveFromWheel(event.detail);
+    const onWheel = event => {
+      if (dialog || event.ctrlKey || event.target.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+      event.preventDefault();
+      moveFromWheel({x:event.deltaX, y:event.deltaY, mode:event.deltaMode, shift:event.shiftKey});
+    };
+    window.addEventListener('wheel', onWheel, {capture:true, passive:false});
     window.addEventListener('exhibit-wheel', onFrameWheel);
-    return () => { window.removeEventListener('hashchange', onHash); window.removeEventListener('resize', onResize); window.removeEventListener('keydown', onKey); window.removeEventListener('exhibit-wheel', onFrameWheel); };
+    return () => { window.removeEventListener('hashchange', onHash); window.removeEventListener('resize', onResize); window.removeEventListener('keydown', onKey); window.removeEventListener('wheel', onWheel, true); window.removeEventListener('exhibit-wheel', onFrameWheel); };
   }, [themeIndex, workIndex, dialog, positions]);
   useEffect(() => {
     if (dialog && !modal.current.open) modal.current.showModal();

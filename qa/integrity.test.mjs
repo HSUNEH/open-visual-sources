@@ -4,14 +4,15 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { themes, totalWorks } from '../src/catalog.js';
 
-test('17 visual works retain four themes and exclude every sound exhibit', () => {
-  assert.equal(themes.length, 4); assert.equal(totalWorks, 17);
+test('16 visual works start with fishdraw and exclude Lenia and sound exhibits', () => {
+  assert.equal(themes.length, 4); assert.equal(totalWorks, 16);
+  assert.equal(themes[0].items[0].id, 'fishdraw');
   const works = themes.flatMap(theme => theme.items);
-  assert.equal(new Set(works.map(work => work.id)).size, 17);
+  assert.equal(new Set(works.map(work => work.id)).size, 16);
   for (const work of works) for (const field of ['repo', 'license', 'implementation', 'renderer']) assert.ok(work[field], `${work.id}: ${field}`);
-  for (const id of ['lenia', 'fluid', 'origami', 'shan-shui','sandspiel','fieldplay','wfc']) assert.ok(works.some(work => work.id === id));
+  for (const id of ['fluid', 'origami', 'shan-shui','sandspiel','fieldplay','wfc']) assert.ok(works.some(work => work.id === id));
   assert.ok(!themes.some(theme=>theme.id==='sound'));
-  for (const id of ['pink-trombone','fft','tone']) assert.ok(!works.some(work=>work.id===id));
+  for (const id of ['lenia','pink-trombone','fft','tone']) assert.ok(!works.some(work=>work.id===id));
 });
 
 test('every upstream snapshot and painting matches its provenance hash', async () => {
