@@ -16,6 +16,14 @@
 .nca-instruction{position:absolute;top:calc(100% + 8px);margin:0;font-size:12px;line-height:1.6;text-align:center}
 .nca-actions{display:flex;gap:6px;margin-top:12px}
 .nca-actions .control-button{padding:9px 11px;white-space:nowrap}
+.stage.mapgen-stage{inset:218px 25% 320px;flex-direction:column}
+.mapgen-stage iframe{width:auto;max-width:100%;height:100%;aspect-ratio:1;border:0}
+.stage.softphysics-stage{inset:220px 18% 320px}
+.softphysics-stage iframe{width:100%;height:100%;border:0}
+.work:has(.softphysics-stage) .work-caption h1{font-size:clamp(42px,4.4vw,64px);white-space:nowrap}
+.lightweight-instruction{position:absolute;top:calc(100% + 10px);left:0;right:0;text-align:center;font-size:12px;line-height:1.6;margin:0}
+.lightweight-actions{display:flex;gap:6px}
+.lightweight-actions .control-button{padding:9px 11px;white-space:nowrap}
 .stage.brush-stage{inset:220px 18% 350px}
 .stage.pathtrace-stage{inset:220px 8% 345px}
 .work:has(.pathtrace-stage) .work-caption h1{font-size:clamp(42px,4.4vw,64px);white-space:nowrap}
@@ -27,6 +35,13 @@
 .brush-actions{display:flex;gap:6px;margin-top:12px}
 .brush-actions .control-button{padding:8px 10px;min-height:36px}
 @media(max-width:700px){
+  .stage.mapgen-stage{inset:222px 36px 388px 22px}
+  .stage.softphysics-stage{inset:222px 30px 388px 14px}
+  .work:has(.softphysics-stage) .work-caption h1{font-size:42px}
+  .lightweight-instruction{font-size:10px;top:calc(100% + 6px)}
+  .work:has(.lightweight-controls) .work-caption{bottom:195px}
+  .lightweight-controls input[type=range]{min-height:24px}
+  .lightweight-actions .control-button{padding:8px;font-size:10px;min-height:36px}
   .stage.nca-stage{inset:222px 36px 398px 22px}
   .nca-instruction{top:calc(100% + 6px);font-size:11px;white-space:nowrap}
   .nca-actions{gap:4px;margin-top:0}

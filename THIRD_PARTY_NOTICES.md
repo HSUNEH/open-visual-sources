@@ -26,6 +26,12 @@ The source files are unmodified. Wrappers live in `src/scenes/`, `public/workers
 
 ## Installed libraries
 
+### Mapgen4 and Soft Physics additions
+
+- Mapgen4 by Amit Patel / Red Blob Games, Apache-2.0, pinned at `c1d8cb018a11a8b9e17d59233c36c176429d37eb`. Original source and license: `public/vendor/mapgen/source/`. Dependencies' full licenses: `public/vendor/mapgen/licenses/`. Build-time changes to spacing, framebuffer/canvas sizes, random initial seed, and the host bridge are recorded in `scripts/vendor-mapgen.mjs`; original snapshots remain unchanged. The generated npm lock and compiled/data outputs are explicitly marked generated in `mapgen-manifest.json`.
+- Ten Minute Physics by Matthias Müller, pinned at `bfc4b63667c7e3ef683a7d6491c26f13c7e0d831`. Only demos 10 (soft bodies) and 15 (cloth self-collision) are used; both contain their own MIT grants, retained verbatim in `public/vendor/physics/soft.html` and `cloth.html`. This is not a license claim about the entire repository. The local adapter supplies the scene, lifecycle, particle limits and controls without rewriting the solver files.
+- Three.js 0.139.2 and its OrbitControls (MIT) serve the two original physics demos; `public/vendor/physics/LICENSE-three`. Source URLs and SHA-256 hashes: `public/vendor/physics-manifest.json`.
+
 React and React DOM (MIT), Vite (MIT), Three.js (MIT), React Three Fiber (MIT), Motion (MIT), three-mesh-bvh (MIT), fft.js (MIT), Tone.js (MIT), Matter.js (MIT), Flubber (MIT), d3-delaunay (ISC), Lucide React (ISC), and Manrope font (OFL-1.1). Their exact package versions are in `package-lock.json`; installed license text is retained in `node_modules`.
 
 `@lnjs/core` is the actual TypeScript port at https://github.com/aweary/ln.js. Its package declares ISC; the original https://github.com/fogleman/ln declares MIT. Those are different sources and the app labels both.

@@ -1,0 +1,181 @@
+[
+  {
+    "file": "vendor/mapgen/source/LICENSE",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/LICENSE",
+    "sha256": "c5accbbd8546e94c34aed24afe689a617627d18eed5a6c48277e48db57c23851"
+  },
+  {
+    "file": "vendor/mapgen/source/colormap.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/colormap.ts",
+    "sha256": "4a2fc0b683f5fe07ecce4f2e7309247d9100ef96c78e66c1927711e4b70310c5"
+  },
+  {
+    "file": "vendor/mapgen/source/config.js",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/config.js",
+    "sha256": "d1b91e9d7c8c58dce37e2ae3e6da0d5b88f1265a2ea62e62a57c7534ee28599f"
+  },
+  {
+    "file": "vendor/mapgen/source/generate-points-file.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/generate-points-file.ts",
+    "sha256": "2006486a20da33e17e914f24ee827870d26b161ffca56098ad9879779993a9f0"
+  },
+  {
+    "file": "vendor/mapgen/source/generate-points.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/generate-points.ts",
+    "sha256": "b33862c7b587354a745206889e8f74f7f90a4d59a781c56694888ce68272d3c5"
+  },
+  {
+    "file": "vendor/mapgen/source/geometry.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/geometry.ts",
+    "sha256": "19303bcad57de96f1682056eeecd29884ca8b97495691d30271a8e9519d4b91a"
+  },
+  {
+    "file": "vendor/mapgen/source/jsconfig.json",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/jsconfig.json",
+    "sha256": "b578c234903a7a75ac545bf3f9f7988c0d6ff6d52410046ba80603305808b7ca"
+  },
+  {
+    "file": "vendor/mapgen/source/map.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/map.ts",
+    "sha256": "2ffc8c40c1af53c7146143c35cb23b09c37cfb690f65d389890c1da54c97b79c"
+  },
+  {
+    "file": "vendor/mapgen/source/mapgen4.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/mapgen4.ts",
+    "sha256": "8d2455d3daf9dc3bf64e27102c57dc5f42bdc7ffebe846dccb0ac86416f97e81"
+  },
+  {
+    "file": "vendor/mapgen/source/mesh.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/mesh.ts",
+    "sha256": "94ebd012bc0bbe5caf62dc763081c252bf1fcff346225927bcbe0768f24a008b"
+  },
+  {
+    "file": "vendor/mapgen/source/package-lock.json",
+    "url": "https://github.com/redblobgames/mapgen4/tree/c1d8cb018a11a8b9e17d59233c36c176429d37eb",
+    "sha256": "7ad7628c966ec19eca77cba2342dea440984080e1645b2472457552d1eaf1020",
+    "generated": true
+  },
+  {
+    "file": "vendor/mapgen/source/package.json",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/package.json",
+    "sha256": "bb838db4650a839d492029d99bef6fc547b790576289bc34094de8ef78293df8"
+  },
+  {
+    "file": "vendor/mapgen/source/painting.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/painting.ts",
+    "sha256": "2d19e97e7e4f00e992b8c28f6c5757b73f214bd641a9269cf94aebcdd0127bfe"
+  },
+  {
+    "file": "vendor/mapgen/source/render.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/render.ts",
+    "sha256": "858418d49c3da7aca23441e7683ea7cf26363e72cc37aa52585868525b18c87b"
+  },
+  {
+    "file": "vendor/mapgen/source/serialize-points.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/serialize-points.ts",
+    "sha256": "59833a770a01258dbaf2ca6e62172e09bad2dcc89f272c1ca226cf9952fcdd4b"
+  },
+  {
+    "file": "vendor/mapgen/source/tsconfig.json",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/tsconfig.json",
+    "sha256": "e110ff509bd69c6ca31c951e60b2818d50b6b83a11eec4769bdf1f7998bc4ceb"
+  },
+  {
+    "file": "vendor/mapgen/source/types.d.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/types.d.ts",
+    "sha256": "e1c7bea5f2aeeb944e20a5ee3db07fc158d74ab21107adc76c29c63a74af33b3"
+  },
+  {
+    "file": "vendor/mapgen/source/worker.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/worker.ts",
+    "sha256": "021d43f6597de23efdfa8cef619fc2ad1c1a37d3a008414e05760e7167f68ee4"
+  },
+  {
+    "file": "vendor/mapgen/source/dual-mesh/LICENSE",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/dual-mesh/LICENSE",
+    "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+  },
+  {
+    "file": "vendor/mapgen/source/dual-mesh/create.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/dual-mesh/create.ts",
+    "sha256": "5f80206979c57438e8a6cd787527562e79e0864afab48a20c7289a2ed5adf537"
+  },
+  {
+    "file": "vendor/mapgen/source/dual-mesh/dual-mesh-diagrams.js",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/dual-mesh/dual-mesh-diagrams.js",
+    "sha256": "f453d5d780230d0eb9d36f0e86d3434cc438440448bf3de59b56a830c6257785"
+  },
+  {
+    "file": "vendor/mapgen/source/dual-mesh/index.ts",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/dual-mesh/index.ts",
+    "sha256": "7d0a858bef75cd14126b696f4210a60fd0db3c89046603dc69a24eb56f875b4a"
+  },
+  {
+    "file": "vendor/mapgen/source/dual-mesh/package.json",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/dual-mesh/package.json",
+    "sha256": "3c753f1e9539009e9cee0a08a084053a2a0d415a565f7b1d7398ac9029223a99"
+  },
+  {
+    "file": "vendor/mapgen/source/dual-mesh/tests.js",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/dual-mesh/tests.js",
+    "sha256": "e2d116ddcde1aebc5cf98aef39b9f30aa224f3850a30e1b26dc90ad5109bc8d4"
+  },
+  {
+    "file": "vendor/mapgen/source/dual-mesh/tsconfig.json",
+    "url": "https://raw.githubusercontent.com/redblobgames/mapgen4/c1d8cb018a11a8b9e17d59233c36c176429d37eb/dual-mesh/tsconfig.json",
+    "sha256": "48c68e3d60755d4d3e478a301b34ee6a1c70ab3fee879e0f5c259c839da8036b"
+  },
+  {
+    "file": "vendor/mapgen/build/points-10.data",
+    "url": "https://github.com/redblobgames/mapgen4/tree/c1d8cb018a11a8b9e17d59233c36c176429d37eb",
+    "sha256": "cd75aac58403cd48a3baa1b97402a78d8c0867561a8b7bd0282bdd49c912956a",
+    "generated": true
+  },
+  {
+    "file": "vendor/mapgen/build/_bundle.js",
+    "url": "https://github.com/redblobgames/mapgen4/tree/c1d8cb018a11a8b9e17d59233c36c176429d37eb",
+    "sha256": "9d18c40ebd554d75ea7fad254d22b3e674746937c831184fae4f3a6572c1dcdc",
+    "generated": true
+  },
+  {
+    "file": "vendor/mapgen/build/_worker.js",
+    "url": "https://github.com/redblobgames/mapgen4/tree/c1d8cb018a11a8b9e17d59233c36c176429d37eb",
+    "sha256": "c67b63f74e0ba38f8276a78eaa1ecd392d3ab90c0879415bd9300ed9fceace10",
+    "generated": true
+  },
+  {
+    "file": "vendor/mapgen/licenses/delaunator.txt",
+    "url": "https://www.npmjs.com/package/delaunator/v/5.1.0",
+    "sha256": "0b348fff56384b43dbb37593906904e56d0f9deb51eae590d4dc6d427fbf1808"
+  },
+  {
+    "file": "vendor/mapgen/licenses/robust-predicates.txt",
+    "url": "https://www.npmjs.com/package/robust-predicates/v/3.0.3",
+    "sha256": "88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd"
+  },
+  {
+    "file": "vendor/mapgen/licenses/fast-2d-poisson-disk-sampling.txt",
+    "url": "https://www.npmjs.com/package/fast-2d-poisson-disk-sampling/v/1.0.3",
+    "sha256": "1c56f1a84b8d67cdd38dfbf0183067df6a4327130d389eadacf29ce7d0303df7"
+  },
+  {
+    "file": "vendor/mapgen/licenses/flatqueue.txt",
+    "url": "https://www.npmjs.com/package/flatqueue/v/2.0.3",
+    "sha256": "08a9d45b1300baf1925a966bcbec26cf9bd4137883d96b79089cba2c72d872bc"
+  },
+  {
+    "file": "vendor/mapgen/licenses/gl-matrix.txt",
+    "url": "https://www.npmjs.com/package/gl-matrix/v/3.4.4",
+    "sha256": "af62d31a0cdc1bf95d5e19428c3e0de368b727d9d5b6b6cdb466f8a52e68ad06"
+  },
+  {
+    "file": "vendor/mapgen/licenses/simplex-noise.txt",
+    "url": "https://www.npmjs.com/package/simplex-noise/v/4.0.3",
+    "sha256": "01951c4f7d8e7ce92540c4f575a2aec39738b39d25a06a96059d82ed83fb594e"
+  },
+  {
+    "file": "vendor/mapgen/licenses/@redblobgames-prng.txt",
+    "url": "https://www.npmjs.com/package/@redblobgames/prng/v/1.0.0",
+    "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+  }
+]

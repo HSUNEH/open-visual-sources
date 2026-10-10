@@ -1,6 +1,8 @@
 # Open Visuals
 
-오픈소스의 결과물을 직접 보고 만지는 전체 화면 전시. 제공된 `index-opensource.csv`에서 고른 18개 항목과 요청한 Tileable Volume Noise 참고 작품을 네 테마로 묶었습니다. 총 19개이며 첫 화면은 fishdraw입니다. 사용자 요청으로 Lenia와 사운드 테마는 전시에서 제외했습니다. 이전 원본 스냅샷과 라이선스는 출처 보존을 위해 유지합니다.
+오픈소스의 결과물을 직접 보고 만지는 전체 화면 전시. 제공된 `index-opensource.csv`에서 고른 20개 항목과 요청한 Tileable Volume Noise 참고 작품을 네 테마로 묶었습니다. 총 21개이며 첫 화면은 fishdraw입니다. 사용자 요청으로 Lenia와 사운드 테마는 전시에서 제외했습니다. 이전 원본 스냅샷과 라이선스는 출처 보존을 위해 유지합니다.
+
+**가벼운 체험 추가**: Mapgen4는 산맥·평지·바다를 그리며 강수량을 조절합니다. Soft Physics는 원본 XPBD 솔버로 말랑한 토끼와 매달린 천을 직접 잡아 변형합니다. 블랙홀은 원본의 큰 별 텍스처 메모리 요구량 때문에 이번 추가에서 제외했습니다.
 
 **Neural CA**: 도마뱀·나비·무당벌레의 일부를 드래그해서 지우면 남은 세포들이 학습한 형태를 복원합니다. ‘세포 성장 속도’를 0.25–4배로 조절해 성장과 복원을 관찰할 수 있습니다(모바일 포함). 클릭 가능한 ‘한 조각 지우기’와 ‘씨앗부터 다시’도 제공합니다. 임의의 입력 사진을 변환하는 기능이 아니라, 사전 학습된 목표 형태로 자라나는 원본 신경망입니다. 모두 지운 상태에서는 자동 복원이 불가능하므로 씨앗을 다시 시작하세요.
 
@@ -52,6 +54,7 @@ npm run preview
 | 계속 생성 | Volume noise | TileableVolumeNoise 원리를 참고한 자체 GLSL 레이마칭. 원본 C++는 실행하지 않음 |
 | 계속 생성 | Field Play | 원본 GPU 벡터장 엔진, 65,536개 입자 · 전시용 수식 3종 |
 | 계속 생성 | Wave Function Collapse | kchapelier 실제 JS 포트, mxgmn 원본 꽃밭·길·미로 표본. Worker에서 단계별 제약 전파 |
+| 직접 만지기 | Mapgen4 | Red Blob Games 원본 지형·강 생성기와 WebGL2 렌더러. 산맥·평지·바다 그리기 및 강수량 조절 |
 | 직접 만지기 | WebGL Fluid Simulation | Pavel Dobryakov 원본 GPU 유체 솔버. 마우스 호버·터치 그리기·색 주입·소용돌이 |
 | 직접 만지기 | p5.brush | 원본 독립 실행형 WebGL2 붓 엔진. 수채화·연필·목탄, 5색 팔레트, 직접 그리기·PNG 저장 |
 | 직접 만지기 | Growing Neural Cellular Automata | Distill 원본 WebGL 엔진 + ex3 복원 학습 모델 3종. 실제 16채널 세포 상태 삭제·성장·복원 |
@@ -60,6 +63,7 @@ npm run preview
 | 직접 만지기 | Threading | 자체 작성한 탐욕적 실선 근사 체험. piellardj 원본 코드를 포함하지 않으며 원본 데모 링크 제공 |
 | 직접 만지기 | d3-delaunay | 실제 Delaunay / Voronoi 라이브러리 |
 | 3D 공간 | Origami Simulator | Amanda Ghassaei 원본 GPU 동적 솔버. 물폭탄·미우라·종이학 패턴과 접힘 조절 |
+| 3D 공간 | Soft Physics | Ten Minute Physics 원본 XPBD 소프트바디·천 솔버. 직접 잡기·단단함·누르기/바람 |
 | 3D 공간 | Path Tracing | Erich Loftis 원본 Material Roughness 장면·GLSL 광선 추적. 유리·금·구리 및 시점 이동 |
 | 3D 공간 | Three.js | Three.js + React Three Fiber로 작성한 회전 조각 |
 | 3D 공간 | Three Mesh BVH | 40,960개 삼각형의 자체 지형과 실제 가속 레이캐스트. 자동 스캔·포인터 탐사 |
@@ -73,6 +77,10 @@ Threading과 Volume noise는 원본 프로젝트를 그대로 옮긴 전시가 �
 전시 작품이 중심이므로 **Motion의 테마 이동 피드백 + 직접 디자인한 얇은 전시 UI**를 선택했습니다. Three.js / React Three Fiber는 3D 작품 실행에 사용하고, 선화에는 SVG·Canvas를 유지합니다.
 
 ## 구성
+
+Mapgen4는 고정 커밋 `c1d8cb018a11a8b9e17d59233c36c176429d37eb`을 체크아웃하고 의존성을 설치한 뒤 `node scripts/vendor-mapgen.mjs /path/to/mapgen4`로 생성합니다. 원본 소스와 설치 잠금 파일, 의존성 라이선스, 생성물 해시는 `public/vendor/mapgen/` 및 `mapgen-manifest.json`에 있습니다. 빌드 어댑터만 격자 간격을 10으로, 내부 버퍼를 1024px, 출력 캔버스를 768px로 제한합니다. 지형 계산은 Worker에서 입력이 있을 때만 수행합니다. 새로운 장면은 crypto 랜덤 시드를 사용합니다.
+
+Soft Physics는 `node scripts/vendor-physics.mjs`로 고정 커밋의 MIT 데모 10·15를 받습니다. 원본 파일을 보존하고 전시용 어댑터로 333점 토끼 한 개 또는 900점 천, 8 substeps, DPR 최대 1.5, 무그림자 조명을 설정합니다. 물체 추가 기능은 노출하지 않습니다. 작품이 비활성화되면 iframe이 제거되고, 일시정지 시 계산·렌더링 RAF가 중단됩니다. 성능은 기기별로 다릅니다.
 
 NCA는 `node scripts/vendor-nca.mjs`로 Distill의 고정 커밋에서 원본 엔진·가중치를 받습니다. `public/vendor/nca-manifest.json`에 URL과 해시를 기록합니다. 원본 소스는 수정하지 않으며, 64×64 격자·지우기 입력·일시정지·모델 교체·성장 배속은 전시용 래퍼가 담당합니다. 1배는 초당 180회 업데이트를 목표로 하며, 느린 기기에서는 프레임당 최대 12회로 제한합니다. 드래그 중에는 성장을 잠시 멈추고 놓으면 재개합니다. 기본 WebGL로 동작하며 학습이나 서버 추론은 실행하지 않습니다. 원본 엔진 Apache-2.0, 배포 모델 저장소 CC BY 4.0, 당시 목표 Noto Emoji 이미지 Apache-2.0을 각각 고지합니다.
 

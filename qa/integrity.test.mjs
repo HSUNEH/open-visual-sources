@@ -4,11 +4,11 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { themes, totalWorks } from '../src/catalog.js';
 
-test('19 visual works start with fishdraw and exclude Lenia and sound exhibits', () => {
-  assert.equal(themes.length, 4); assert.equal(totalWorks, 19);
+test('21 visual works start with fishdraw and exclude Lenia and sound exhibits', () => {
+  assert.equal(themes.length, 4); assert.equal(totalWorks, 21);
   assert.equal(themes[0].items[0].id, 'fishdraw');
   const works = themes.flatMap(theme => theme.items);
-  assert.equal(new Set(works.map(work => work.id)).size, 19);
+  assert.equal(new Set(works.map(work => work.id)).size, 21);
   for (const work of works) for (const field of ['repo', 'license', 'implementation', 'renderer']) assert.ok(work[field], `${work.id}: ${field}`);
   for (const id of ['fluid', 'origami', 'shan-shui','sandspiel','fieldplay','wfc','brush','pathtrace','nca']) assert.ok(works.some(work => work.id === id));
   assert.ok(!themes.some(theme=>theme.id==='sound'));
@@ -22,6 +22,8 @@ test('every upstream snapshot and painting matches its provenance hash', async (
     ['public/vendor/expansion-manifest.json', 'public/'],
     ['public/vendor/brush-pathtrace-manifest.json', 'public/'],
     ['public/vendor/nca-manifest.json', 'public/'],
+    ['public/vendor/mapgen-manifest.json', 'public/'],
+    ['public/vendor/physics-manifest.json', 'public/'],
   ];
   for (const [file, base] of manifests) {
     const records = JSON.parse(await readFile(file));

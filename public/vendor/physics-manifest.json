@@ -1,0 +1,27 @@
+[
+  {
+    "file": "vendor/physics/soft.html",
+    "url": "https://raw.githubusercontent.com/matthias-research/pages/bfc4b63667c7e3ef683a7d6491c26f13c7e0d831/tenMinutePhysics/10-softBodies.html",
+    "sha256": "f9e70b68fb1c949af4e5143383857da89c2030965a2ca4ae082313e70968ef97"
+  },
+  {
+    "file": "vendor/physics/cloth.html",
+    "url": "https://raw.githubusercontent.com/matthias-research/pages/bfc4b63667c7e3ef683a7d6491c26f13c7e0d831/tenMinutePhysics/15-selfCollision.html",
+    "sha256": "8751a467b4a0df77ebb7c941247f60f057866db4058c6cd9a57e12ddbff87f38"
+  },
+  {
+    "file": "vendor/physics/three.min.js",
+    "url": "https://unpkg.com/three@0.139.2/build/three.min.js",
+    "sha256": "6bae6112e3c69c3ed2fe32d68eebb1bb41492484aed467b155bd4570aa10b914"
+  },
+  {
+    "file": "vendor/physics/OrbitControls.js",
+    "url": "https://unpkg.com/three@0.139.2/examples/js/controls/OrbitControls.js",
+    "sha256": "84e74621b76f7c063dd04dfa6aa8d09b55c8b1c774532ebe0edbe0ce778bab85"
+  },
+  {
+    "file": "vendor/physics/LICENSE-three",
+    "url": "https://unpkg.com/three@0.139.2/LICENSE",
+    "sha256": "fbf3943930dacbf56aabb8dc5d816440bd16aa6f4cc78ddbdf12106ee1807832"
+  }
+]
