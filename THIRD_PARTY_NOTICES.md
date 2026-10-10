@@ -20,6 +20,7 @@ The original user CSV is retained unchanged. This document describes code actual
 | https://github.com/kchapelier/wavefunctioncollapse | Kévin Chapelier | `public/vendor/wfc/LICENSE-port` |
 | https://github.com/acamposuribe/p5.brush | Alejandro Campos Uribe | `public/vendor/brush/LICENSE.md` |
 | https://github.com/erichlof/THREE.js-PathTracing-Renderer | Erich Loftis | `public/vendor/pathtrace/LICENSE` (CC0) |
+| https://github.com/distillpub/post--growing-ca | Alexander Mordvintsev, Ettore Randazzo, Eyvind Niklasson, Michael Levin | `public/vendor/nca/LICENSE-engine` (Apache-2.0 engine), `LICENSE-models` (CC BY 4.0 repository content) |
 
 The source files are unmodified. Wrappers live in `src/scenes/`, `public/workers/fish.js`, and `src/scenes/primitive-adapter.js`. Source URLs and local hashes are recorded in `public/vendor/manifest.json`.
 
@@ -49,7 +50,7 @@ The three paintings are public-domain works distributed as CC0 by the Art Instit
 - Claude Monet, *Water Lilies* (1906), AIC 16568 — https://www.artic.edu/artworks/16568
 - Katsushika Hokusai, *Under the Wave off Kanagawa*, AIC 24645 — https://www.artic.edu/artworks/24645
 
-Images are bundled, not hotlinked. Conversion uses a square center crop. Original programmatic input illustrations remain as loading fallbacks. There are no model weights, prerecorded audio samples, or remote font services.
+Images are bundled, not hotlinked. Conversion uses a square center crop. Original programmatic input illustrations remain as loading fallbacks. NCA's small pretrained model weights are bundled locally; there are no prerecorded audio samples or remote font services.
 
 ## Threading portrait presets
 
@@ -62,6 +63,8 @@ The following public-domain reproductions are bundled from Wikimedia Commons. Th
 Sound exhibits are no longer listed or reachable in the exhibition. Their previous source snapshots and license notices are retained for provenance; the FFT/Tone scene is not bundled into the app.
 
 ## Additional visual engines
+
+Growing Neural Cellular Automata is by Alexander Mordvintsev, Ettore Randazzo, Eyvind Niklasson and Michael Levin, [Distill, 2020](https://distill.pub/2020/growing-ca/), DOI 10.23915/distill.00023. We bundle unchanged `ca.js`, TWGL 4.14.2 and three `ex3` regeneration model JSON files from `distillpub/post--growing-ca` commit `a12c7efa541b5770043a8d5470bffeacfd7b0435`. The engine explicitly declares Apache-2.0; the repository license for other content is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). TWGL is MIT (Gregg Tavares), with its original notice and full license retained. Target shapes are the 2020 training notebook's Google Noto Emoji images; the historical Apache-2.0 image license is retained as `LICENSE-noto-emoji-images`. No Noto font or source target raster is distributed here. The independently authored `exhibit.js` wrapper changes the interface, uses a 64×64 grid, pauses evolution while dragging, and connects lifecycle controls; the original neural update rules and weights are unchanged. All source URLs and byte hashes are in `public/vendor/nca-manifest.json`.
 
 p5.brush uses the original standalone WebGL2 engine at commit `0e85177597313b00905396e19efc7b1a5f134e8b` (MIT). The flower composition, freehand queue, palette and exhibition lifecycle are authored wrappers in `public/vendor/brush/exhibit.js` and `src/scenes/Brush.jsx`.
 

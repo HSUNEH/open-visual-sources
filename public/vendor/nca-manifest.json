@@ -1,0 +1,47 @@
+[
+  {
+    "file": "vendor/nca/ca.js",
+    "url": "https://raw.githubusercontent.com/distillpub/post--growing-ca/a12c7efa541b5770043a8d5470bffeacfd7b0435/public/ca.js",
+    "sha256": "6649080c193f8814e8cefade946f97edfff1a8446d3a4fb5ea27ce1dad17af0c"
+  },
+  {
+    "file": "vendor/nca/twgl.min.js",
+    "url": "https://raw.githubusercontent.com/distillpub/post--growing-ca/a12c7efa541b5770043a8d5470bffeacfd7b0435/public/twgl.min.js",
+    "sha256": "1d7fd4dbf4a939d0abfd25c8507fb78678c011cbc1d433557d0763167a53471e"
+  },
+  {
+    "file": "vendor/nca/models/lizard.json",
+    "url": "https://raw.githubusercontent.com/distillpub/post--growing-ca/a12c7efa541b5770043a8d5470bffeacfd7b0435/public/webgl_models8/ex3_%F0%9F%A6%8E.json",
+    "sha256": "e4fc6cf03accac43d5f6d96fe3cce4dbef3a25100ebe82252aedc5cc25c2a8c2"
+  },
+  {
+    "file": "vendor/nca/models/butterfly.json",
+    "url": "https://raw.githubusercontent.com/distillpub/post--growing-ca/a12c7efa541b5770043a8d5470bffeacfd7b0435/public/webgl_models8/ex3_%F0%9F%A6%8B.json",
+    "sha256": "57fa35528623f1f1e387f8bad55ef3e1f6d1375f8ef269b3af4aa6dd57e98118"
+  },
+  {
+    "file": "vendor/nca/models/ladybug.json",
+    "url": "https://raw.githubusercontent.com/distillpub/post--growing-ca/a12c7efa541b5770043a8d5470bffeacfd7b0435/public/webgl_models8/ex3_%F0%9F%90%9E.json",
+    "sha256": "ed5557f1e6c023aba1656572dbfa8a1a7e145c563af052cc5de55dfe5cda06ed"
+  },
+  {
+    "file": "vendor/nca/LICENSE-models",
+    "url": "https://raw.githubusercontent.com/distillpub/post--growing-ca/a12c7efa541b5770043a8d5470bffeacfd7b0435/LICENSE",
+    "sha256": "945fbcb37deca05bccd7c3ca0e261679f1f5373515504fdbad68f6f3cf6f49b9"
+  },
+  {
+    "file": "vendor/nca/LICENSE-engine",
+    "url": "https://raw.githubusercontent.com/google-research/self-organising-systems/3d5547ca48b60ecac459834e2c05c9ff5df87991/LICENSE",
+    "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+  },
+  {
+    "file": "vendor/nca/LICENSE-twgl",
+    "url": "https://raw.githubusercontent.com/greggman/twgl.js/v4.14.2/LICENSE.md",
+    "sha256": "87a5a44b12faff1205d5325b67b26216404fec66f08db2df4d448bff42f4d668"
+  },
+  {
+    "file": "vendor/nca/LICENSE-noto-emoji-images",
+    "url": "https://raw.githubusercontent.com/googlefonts/noto-emoji/f7abf9645ce10d923fb5e8bccf62e0ffae47b999/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+  }
+]

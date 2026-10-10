@@ -1,6 +1,8 @@
 # Open Visuals
 
-오픈소스의 결과물을 직접 보고 만지는 전체 화면 전시. 제공된 `index-opensource.csv`에서 고른 17개 항목과 요청한 Tileable Volume Noise 참고 작품을 네 테마로 묶었습니다. 총 18개이며 첫 화면은 fishdraw입니다. 사용자 요청으로 Lenia와 사운드 테마는 전시에서 제외했습니다. 이전 원본 스냅샷과 라이선스는 출처 보존을 위해 유지합니다.
+오픈소스의 결과물을 직접 보고 만지는 전체 화면 전시. 제공된 `index-opensource.csv`에서 고른 18개 항목과 요청한 Tileable Volume Noise 참고 작품을 네 테마로 묶었습니다. 총 19개이며 첫 화면은 fishdraw입니다. 사용자 요청으로 Lenia와 사운드 테마는 전시에서 제외했습니다. 이전 원본 스냅샷과 라이선스는 출처 보존을 위해 유지합니다.
+
+**Neural CA**: 도마뱀·나비·무당벌레의 일부를 드래그해서 지우면 남은 세포들이 학습한 형태를 복원합니다. 클릭 가능한 ‘한 조각 지우기’와 ‘씨앗부터 다시’도 제공합니다. 임의의 입력 사진을 변환하는 기능이 아니라, 사전 학습된 목표 형태로 자라나는 원본 신경망입니다. 모두 지운 상태에서는 자동 복원이 불가능하므로 씨앗을 다시 시작하세요.
 
 최근 추가: **p5.brush, Path Tracing**, 그리고 **Sandspiel, Field Play, Wave Function Collapse**. 원본 질감 붓, 재질별 광선 추적기, Rust/WASM 셀룰러 솔버, GPU 벡터장 엔진, WFC JavaScript 포트를 로컬에서 실행합니다. Primitive에는 고흐 〈아를의 침실〉, 모네 〈수련〉, 호쿠사이 〈큰 파도〉를, Threading에는 얼굴 중심으로 자른 모나리자·진주 귀걸이 소녀·고흐 자화상을 제공합니다.
 
@@ -52,6 +54,7 @@ npm run preview
 | 계속 생성 | Wave Function Collapse | kchapelier 실제 JS 포트, mxgmn 원본 꽃밭·길·미로 표본. Worker에서 단계별 제약 전파 |
 | 직접 만지기 | WebGL Fluid Simulation | Pavel Dobryakov 원본 GPU 유체 솔버. 마우스 호버·터치 그리기·색 주입·소용돌이 |
 | 직접 만지기 | p5.brush | 원본 독립 실행형 WebGL2 붓 엔진. 수채화·연필·목탄, 5색 팔레트, 직접 그리기·PNG 저장 |
+| 직접 만지기 | Growing Neural Cellular Automata | Distill 원본 WebGL 엔진 + ex3 복원 학습 모델 3종. 실제 16채널 세포 상태 삭제·성장·복원 |
 | 직접 만지기 | Sandspiel | 원본 Rust/WASM 셀룰러 솔버. 8개 물질 붓, 모래와 얼음·작은 숲. 자체 Canvas 렌더러; GPU 바람/압력 솔버 제외 |
 | 직접 만지기 | Primitive | `ondras/primitive.js`의 실제 Shape/Step/Canvas/State 코드. 전시용 수명·스케줄 어댑터 추가 |
 | 직접 만지기 | Threading | 자체 작성한 탐욕적 실선 근사 체험. piellardj 원본 코드를 포함하지 않으며 원본 데모 링크 제공 |
@@ -70,6 +73,8 @@ Threading과 Volume noise는 원본 프로젝트를 그대로 옮긴 전시가 �
 전시 작품이 중심이므로 **Motion의 테마 이동 피드백 + 직접 디자인한 얇은 전시 UI**를 선택했습니다. Three.js / React Three Fiber는 3D 작품 실행에 사용하고, 선화에는 SVG·Canvas를 유지합니다.
 
 ## 구성
+
+NCA는 `node scripts/vendor-nca.mjs`로 Distill의 고정 커밋에서 원본 엔진·가중치를 받습니다. `public/vendor/nca-manifest.json`에 URL과 해시를 기록합니다. 원본 소스는 수정하지 않으며, 64×64 격자·지우기 입력·일시정지·모델 교체는 전시용 래퍼가 담당합니다. 드래그 중에는 성장을 잠시 멈추고 놓으면 재개합니다. 기본 WebGL로 동작하며 학습이나 서버 추론은 실행하지 않습니다. 원본 엔진 Apache-2.0, 배포 모델 저장소 CC BY 4.0, 당시 목표 Noto Emoji 이미지 Apache-2.0을 각각 고지합니다.
 
 p5.brush·Path Tracing은 `node scripts/vendor-brush-pathtrace.mjs`로 고정 커밋의 원본을 받으며, `public/vendor/brush-pathtrace-manifest.json`에 해시를 보관합니다. 붓의 자동 꽃 그림과 조작부는 전시용 코드입니다. 광선 추적은 원본 재질 비교 장면을 사용하고 포인터 잠금을 비활성화했습니다. 두 엔진 모두 WebGL2가 필요합니다.
 
