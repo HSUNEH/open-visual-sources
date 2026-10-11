@@ -1,3 +1,4 @@
+import { Controls } from './Controls';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
@@ -6,7 +7,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { MeshBVH, acceleratedRaycast } from 'three-mesh-bvh';
 import { Slider } from './shared';
 
-function Controls() {
+function OrbitInteraction() {
   const { camera, gl, invalidate } = useThree();
   useEffect(() => {
     const controls = new OrbitControls(camera, gl.domElement);
@@ -123,6 +124,6 @@ function Cloud({ paused, density, seed }) {
 export default function Spatial({ kind, paused, seed }) {
   const [value, setValue] = useState(kind === 'cloud' ? 65 : 28);
   return <><div className="stage three-stage"><Canvas camera={{ position: kind === 'bvh' ? [0,3.4,7.5] : [0, .3, 7.5], fov: 42 }} dpr={[1, 1.6]} frameloop={paused ? 'demand' : 'always'} gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }} fallback={<div className="three-fallback">이 브라우저에서 WebGL을 사용할 수 없습니다. 작품과 코드에서 원본을 확인할 수 있습니다.</div>}>
-    {kind === 'cloud' ? <Cloud paused={paused} density={value} seed={seed}/> : <><Environment/><ambientLight intensity={.8}/><directionalLight position={[3, 5, 4]} intensity={3} color="#f4e6d3"/><directionalLight position={[-4, 1, -3]} intensity={4} color="#8ccee0"/>{kind === 'bvh' ? <TerrainScanner paused={paused} speed={value} seed={seed}/> : <Sculpture kind={kind} paused={paused} speed={value} seed={seed}/>}<Controls/></>}
-  </Canvas></div><div className="work-controls"><Slider label={kind === 'cloud' ? '구름 밀도' : kind === 'bvh' ? '탐사 속도' : '회전 속도'} value={value} onChange={setValue} min={kind === 'cloud' ? 15 : 0}/><p className="control-note">{kind === 'cloud' ? '주기적 3D 노이즈의 자체 GLSL 실험입니다.' : kind === 'bvh' ? '40,960개의 삼각형. 지형을 가리키면 자동 탐사 대신 손끝을 따라갑니다.' : '드래그해서 다른 각도에서 바라보세요.'}</p></div></>;
+    {kind === 'cloud' ? <Cloud paused={paused} density={value} seed={seed}/> : <><Environment/><ambientLight intensity={.8}/><directionalLight position={[3, 5, 4]} intensity={3} color="#f4e6d3"/><directionalLight position={[-4, 1, -3]} intensity={4} color="#8ccee0"/>{kind === 'bvh' ? <TerrainScanner paused={paused} speed={value} seed={seed}/> : <Sculpture kind={kind} paused={paused} speed={value} seed={seed}/>}<OrbitInteraction/></>}
+  </Canvas></div><Controls className="work-controls"><Slider label={kind === 'cloud' ? '구름 밀도' : kind === 'bvh' ? '탐사 속도' : '회전 속도'} value={value} onChange={setValue} min={kind === 'cloud' ? 15 : 0}/><p className="control-note">{kind === 'cloud' ? '주기적 3D 노이즈의 자체 GLSL 실험입니다.' : kind === 'bvh' ? '40,960개의 삼각형. 지형을 가리키면 자동 탐사 대신 손끝을 따라갑니다.' : '드래그해서 다른 각도에서 바라보세요.'}</p></Controls></>;
 }

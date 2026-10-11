@@ -1,7 +1,7 @@
 import React, { Component, Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { motion, useReducedMotion } from 'motion/react';
-import { ArrowUpRight, ArrowDown, ArrowUp, ArrowLeft, ArrowRight, Pause, Play, RotateCcw, X, Search, List, Info, Maximize, Minimize } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, ArrowUp, ArrowLeft, ArrowRight, Pause, Play, RotateCcw, X, Search, List, Info, Maximize, Minimize, SlidersHorizontal } from 'lucide-react';
 import '@fontsource/manrope/400.css';
 import '@fontsource/manrope/500.css';
 import '@fontsource/manrope/600.css';
@@ -12,6 +12,8 @@ import './style.css';
 import './scene-styles.css';
 import './exhibit-styles.css';
 import './expansion-styles.css';
+import './mobile-styles.css';
+import { ControlsContext, mobileLayoutQuery } from './scenes/Controls';
 
 const Drawing = lazy(() => import('./scenes/Drawing'));
 const Spatial = lazy(() => import('./scenes/Spatial'));
@@ -60,6 +62,10 @@ function App() {
   const [dialog, setDialog] = useState(null);
   const [query, setQuery] = useState('');
   const [immersive, setImmersive] = useState(false);
+  const [mobile, setMobile] = useState(() => matchMedia(mobileLayoutQuery).matches);
+  const [controlsOpen, setControlsOpen] = useState(false);
+  const [controlsHost, setControlsHost] = useState(null);
+  const controlsToggle = useRef(null);
   const horizontal = useRef(null);
   const columns = useRef([]);
   const modal = useRef(null);
@@ -68,6 +74,15 @@ function App() {
   const workIndex = positions[themeIndex];
   const item = theme.items[workIndex];
   const behavior = reduced ? 'instant' : 'smooth';
+
+  useEffect(() => {
+    const media = matchMedia(mobileLayoutQuery);
+    const change = () => { setMobile(media.matches); setControlsOpen(false); };
+    media.addEventListener('change', change);
+    return () => media.removeEventListener('change', change);
+  }, []);
+  useEffect(() => { setControlsOpen(false); }, [item.id, immersive, dialog]);
+  function closeControls() { setControlsOpen(false); controlsToggle.current?.focus(); }
 
   function navigate(t, w = positions[t]) {
     if (t < 0 || t >= themes.length || w < 0 || w >= themes[t].items.length) return;
@@ -96,7 +111,8 @@ function App() {
       columns.current.forEach((col, t) => col.scrollTo({ top: positions[t] * col.clientHeight, behavior: 'instant' }));
     };
     const onKey = event => {
-      if (event.key === 'Escape') { setImmersive(false); return; }
+      if (event.key === 'Escape') { if (controlsOpen) closeControls(); else setImmersive(false); return; }
+      if (event.target.closest?.('.mobile-control-sheet')) return;
       if (dialog || /INPUT|TEXTAREA|SELECT|BUTTON/.test(event.target.tagName) || event.target.isContentEditable) return;
       const moves = { ArrowDown: [themeIndex, workIndex + 1], ArrowUp: [themeIndex, workIndex - 1], ArrowLeft: [themeIndex - 1], ArrowRight: [themeIndex + 1] };
       if (moves[event.key]) { event.preventDefault(); navigate(...moves[event.key]); }
@@ -113,14 +129,14 @@ function App() {
     };
     const onFrameWheel = event => moveFromWheel(event.detail);
     const onWheel = event => {
-      if (dialog || event.ctrlKey || event.target.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+      if (dialog || event.ctrlKey || event.target.closest?.('.mobile-control-sheet, input, textarea, select, [contenteditable="true"]')) return;
       event.preventDefault();
       moveFromWheel({x:event.deltaX, y:event.deltaY, mode:event.deltaMode, shift:event.shiftKey});
     };
     window.addEventListener('wheel', onWheel, {capture:true, passive:false});
     window.addEventListener('exhibit-wheel', onFrameWheel);
     return () => { window.removeEventListener('hashchange', onHash); window.removeEventListener('resize', onResize); window.removeEventListener('keydown', onKey); window.removeEventListener('wheel', onWheel, true); window.removeEventListener('exhibit-wheel', onFrameWheel); };
-  }, [themeIndex, workIndex, dialog, positions]);
+  }, [themeIndex, workIndex, dialog, positions, controlsOpen]);
   useEffect(() => {
     if (dialog && !modal.current.open) modal.current.showModal();
     else if (!dialog && modal.current.open) modal.current.close();
@@ -133,7 +149,7 @@ function App() {
     return () => { observer.disconnect(); horizontal.current?.querySelectorAll('.work-controls').forEach(node => { node.inert = false; }); };
   }, [immersive]);
 
-  return <div className={`exhibition ${item.dark ? 'dark' : ''} ${immersive ? 'immersive' : ''}`} style={{ '--paper': item.background, '--ink': item.ink }}>
+  return <ControlsContext.Provider value={{ mobile, host: controlsHost }}><div className={`exhibition ${item.dark ? 'dark' : ''} ${immersive ? 'immersive' : ''}`} style={{ '--paper': item.background, '--ink': item.ink }}>
     <a href="#exhibition" className="skip-link" onClick={event => { event.preventDefault(); horizontal.current.focus({ preventScroll: true }); }}>작품으로 바로가기</a>
     <header className="header" inert={immersive}>
       <button className="brand" onClick={() => navigate(0, 0)} aria-label="Open Visuals 첫 작품"><Mark/><span>open<br/>visuals<span className="brand-dot">.</span></span></button>
@@ -155,7 +171,7 @@ function App() {
         {t.items.map((work, wi) => {
           const active = ti === themeIndex && wi === positions[ti];
           const Scene = sceneMap[work.renderer];
-          return <section key={work.id} className={`work ${work.dark ? 'dark' : ''}`} style={{ '--paper': work.background, '--ink': work.ink }} aria-label={`${work.name} — ${work.subtitle}`}>
+          return <section key={work.id} className={`work ${work.dark ? 'dark' : ''}`} inert={!active} style={{ '--paper': work.background, '--ink': work.ink }} aria-label={`${work.name} — ${work.subtitle}`}>
             <div className="work-context" inert={immersive}><span>{work.medium}</span><span>{work.code}</span></div>
             {active && <SceneBoundary key={`${work.id}-${seed}`} url={`https://github.com/${work.repo}`}>
               <Suspense fallback={<div className="scene-message"><span className="loading-orbit"/>작품을 준비하고 있습니다</div>}>
@@ -165,6 +181,7 @@ function App() {
             <div className="work-caption" inert={immersive}>
               <h1>{work.name}<span className="title-dot">.</span></h1>
               <h2>{work.subtitle}</h2>
+              <button className="mobile-about" tabIndex={active ? 0 : -1} onClick={() => setDialog('about')} aria-label={`${work.name} 작품 정보`}><Info size={16}/>작품 정보</button>
               <p>{work.description}</p>
               <div className="credit"><span>{work.author}</span><span className="credit-divider"/><button tabIndex={active ? 0 : -1} onClick={() => setDialog('about')}>작품과 코드 <ArrowUpRight size={14}/></button></div>
             </div>
@@ -180,10 +197,15 @@ function App() {
     </aside>
 
     <div className="playback-controls">
+      <button ref={controlsToggle} className="mobile-controls-toggle control-button" aria-expanded={controlsOpen} aria-controls="mobile-scene-controls" onClick={() => setControlsOpen(value => !value)}><SlidersHorizontal size={17}/>조작</button>
       <button className="icon-button" onClick={() => setPaused(value => !value)} aria-label={paused ? '작품 움직임 재개' : '작품 움직임 일시정지'} title={paused ? '움직임 재개' : '일시정지'}>{paused ? <Play size={17}/> : <Pause size={17}/>}</button>
       <button className="icon-button" onClick={() => setSeed(s => s + 1)} aria-label="작품 새로 생성" title="새로 생성"><RotateCcw size={17}/></button>
       <button className="icon-button" onClick={() => setImmersive(value => !value)} aria-label={immersive ? '작품 정보 표시' : '작품만 보기'} title="작품만 보기">{immersive ? <Minimize size={17}/> : <Maximize size={17}/>}</button>
     </div>
+    <section id="mobile-scene-controls" className="mobile-control-sheet" aria-label={`${item.name} 조작`} hidden={!mobile || !controlsOpen || immersive}>
+      <div className="mobile-sheet-header"><h2>{item.name} 조작</h2><button className="icon-button" onClick={closeControls} aria-label="조작 닫기"><X size={18}/></button></div>
+      <div ref={setControlsHost} className="mobile-control-groups"/>
+    </section>
     <footer className="footer" inert={immersive}>
       <span className="footer-note"><span className={`live-dot ${paused ? 'paused' : ''}`}/>{paused ? '잠시 멈춘 장면' : '지금, 코드가 만드는 장면'}</span>
       <div className="navigation-hint"><span><ArrowLeft size={13}/><ArrowRight size={13}/> 테마</span><span><ArrowUp size={13}/><ArrowDown size={13}/> 작품</span></div>
@@ -200,7 +222,7 @@ function App() {
         </> : <><h2>{item.name}<span className="title-dot">.</span></h2><p className="dialog-intro">{item.description}</p><dl><dt>만든 사람</dt><dd>{item.author}</dd><dt>이 전시의 구현</dt><dd>{item.implementation}</dd><dt>라이선스</dt><dd>{item.license}</dd><dt>컬렉션 번호</dt><dd>{item.code}</dd></dl><p>{item.hint}</p><a className="source-link" href={`https://github.com/${item.repo}`} target="_blank" rel="noreferrer">원본 소스 보기 <ArrowUpRight size={19}/></a>{item.demo && <a className="source-link secondary" href={item.demo} target="_blank" rel="noreferrer">작가의 원본 데모 <ArrowUpRight size={19}/></a>}<div className="about-collection"><Info size={18}/><p>제공된 오픈소스 컬렉션에서 고른 작품들입니다. 원본 실행, 브라우저 포트, 원리를 체험하는 자체 데모를 구분해 표기했습니다.</p></div></>}
       </div>
     </dialog>
-  </div>;
+  </div></ControlsContext.Provider>;
 }
 
 createRoot(document.getElementById('root')).render(<App/>);

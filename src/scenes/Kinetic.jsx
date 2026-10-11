@@ -1,3 +1,4 @@
+import { Controls } from './Controls';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Matter from 'matter-js';
 import { interpolate } from 'flubber';
@@ -67,7 +68,7 @@ function Physics({ paused, seed }) {
   return <><div className="work-controls original-presets"><div className="preset-options">{[['cradle','뉴턴의 진자'],['domino','도미노']].map(([id,label])=><button key={id} className={`control-button ${experiment===id?'active':''}`} aria-pressed={experiment===id} onClick={()=>setExperiment(id)}>{label}</button>)}</div></div><div className="stage physics-stage"><canvas ref={canvas} aria-label="Matter.js로 움직이는 물체. 빈 곳을 클릭하면 새 물체가 떨어집니다." onPointerDown={event => {
     const r = event.currentTarget.getBoundingClientRect(), point = { x: event.clientX - r.left, y: event.clientY - r.top };
     if (engine.current && !Matter.Query.point(Matter.Composite.allBodies(engine.current.world), point).length) add(point.x, point.y);
-  }}/></div><div className="work-controls"><Slider label="중력" value={gravity} onChange={setGravity} min={0} max={100}/><button className="control-button" disabled={paused} onClick={() => {const body=Matter.Composite.allBodies(engine.current.world).find(b=>!b.isStatic);if(body)Matter.Body.setVelocity(body,{x:experiment==='cradle'?-12:5,y:0});}}>첫 물체 밀기</button><p className="control-note">{experiment==='cradle'?'한쪽 진자를 당겨 놓으면 반대편으로 운동량이 전달됩니다.':'첫 물체를 밀어 연쇄적으로 쓰러뜨려 보세요.'}</p></div></>;
+  }}/></div><Controls className="work-controls"><Slider label="중력" value={gravity} onChange={setGravity} min={0} max={100}/><button className="control-button" disabled={paused} onClick={() => {const body=Matter.Composite.allBodies(engine.current.world).find(b=>!b.isStatic);if(body)Matter.Body.setVelocity(body,{x:experiment==='cradle'?-12:5,y:0});}}>첫 물체 밀기</button><p className="control-note">{experiment==='cradle'?'한쪽 진자를 당겨 놓으면 반대편으로 운동량이 전달됩니다.':'첫 물체를 밀어 연쇄적으로 쓰러뜨려 보세요.'}</p></Controls></>;
 }
 
 function flower(points, radius, amplitude, frequency) {
@@ -103,6 +104,6 @@ function Morph({ paused, seed }) {
     onPointerMove={event=>{if(dragPointer.current===event.pointerId)dragShape(event);}}
     onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={()=>dragPointer.current=null} onBlur={()=>dragPointer.current=null}
     onKeyDown={event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();event.stopPropagation();setManual(true);setBlend(v=>event.key==='Home'?0:event.key==='End'?100:Math.max(0,Math.min(100,v+(event.key==='ArrowRight'?5:-5))));}}
-  >{[0, 1, 2, 3].map(i => <path key={i} ref={node => paths.current[i] = node} fill={i === 3 ? '#345d68' : 'none'} stroke="#345d68" strokeWidth={.9} opacity={i === 3 ? 1 : .18 + i * .15}/>)}</svg><p className="scene-instruction">그림을 좌우로 드래그해 직접 변형하세요</p></div><div className="work-controls"><button className={`control-button ${manual?'active':''}`} onClick={()=>setManual(v=>!v)}>{manual?'자동 변화로 전환':'내 손으로 변형'}</button>{manual?<Slider label="형태 보간" value={blend} onChange={setBlend} min={0} max={100} suffix="%"/>:<Slider label="형태 변화 속도" value={speed} onChange={setSpeed} min={5} max={80}/>}<p className="control-note">그림을 직접 드래그하거나 슬라이더로 조절하세요. 일시정지 중에도 변형할 수 있습니다.</p></div></>;
+  >{[0, 1, 2, 3].map(i => <path key={i} ref={node => paths.current[i] = node} fill={i === 3 ? '#345d68' : 'none'} stroke="#345d68" strokeWidth={.9} opacity={i === 3 ? 1 : .18 + i * .15}/>)}</svg><p className="scene-instruction">그림을 좌우로 드래그해 직접 변형하세요</p></div><Controls className="work-controls"><button className={`control-button ${manual?'active':''}`} onClick={()=>setManual(v=>!v)}>{manual?'자동 변화로 전환':'내 손으로 변형'}</button>{manual?<Slider label="형태 보간" value={blend} onChange={setBlend} min={0} max={100} suffix="%"/>:<Slider label="형태 변화 속도" value={speed} onChange={setSpeed} min={5} max={80}/>}<p className="control-note">그림을 직접 드래그하거나 슬라이더로 조절하세요. 일시정지 중에도 변형할 수 있습니다.</p></Controls></>;
 }
 export default function Kinetic(props) { return props.kind === 'physics' ? <Physics {...props}/> : <Morph {...props}/>; }

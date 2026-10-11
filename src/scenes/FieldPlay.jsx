@@ -1,3 +1,4 @@
+import { Controls } from './Controls';
 import React,{useEffect,useRef,useState} from 'react';
 import {assetUrl} from '../asset-url';
 import {Slider} from './shared';
@@ -29,6 +30,6 @@ export default function FieldPlay({paused}) {
   }
   return <><div className="work-controls original-presets"><div className="preset-options">{fields.map(([name],i)=><button key={name} className={`control-button ${choice===i?'active':''}`} aria-pressed={choice===i} disabled={!ready} onClick={()=>select(i)}>{name}</button>)}</div></div>
     <div className="stage field-stage"><iframe ref={frame} src={`${assetUrl('vendor/fieldplay/exhibit.html')}?${query}`} title="Field Play 원본 GPU 벡터장"/>{!ready&&<div className="original-loading" role={error?'alert':'status'}>{error||'65,536개의 입자가 흐를 길을 계산하고 있습니다'}</div>}</div>
-    <div className="work-controls"><Slider label="흐름 속도" value={speed} min={4} max={60} onChange={value=>{setSpeed(value);frame.current?.contentWindow?.scene?.setIntegrationTimeStep(value/1000);}}/><p className="control-note">{fields[choice][2]}.<br/>드래그로 공간 이동 · 65,536개의 입자</p></div>
+    <Controls className="work-controls"><Slider label="흐름 속도" value={speed} min={4} max={60} onChange={value=>{setSpeed(value);frame.current?.contentWindow?.scene?.setIntegrationTimeStep(value/1000);}}/><p className="control-note">{fields[choice][2]}.<br/>드래그로 공간 이동 · 65,536개의 입자</p></Controls>
   </>;
 }

@@ -1,3 +1,4 @@
+import { Controls } from './Controls';
 import React, {useEffect,useRef,useState} from 'react';
 import {Delaunay} from 'd3-delaunay';
 import {canvasContext,random} from './shared';
@@ -52,5 +53,5 @@ export default function DelaunayStudy({seed,ink}) {
     else return;
     event.preventDefault();setCount(nodes.current.length);setVersion(v=>v+1);
   }
-  return <><div className="work-controls original-presets"><div className="preset-options">{[['cells','영역 보기'],['triangles','삼각망 보기'],['erase','점 지우기']].map(([id,label])=><button key={id} className={`control-button ${mode===id?'active':''}`} aria-pressed={mode===id} onClick={()=>setMode(id)}>{label}</button>)}</div></div><div className="stage delaunay-stage"><canvas ref={canvas} tabIndex={0} aria-label="보로노이 편집기. 커서 이동으로 영역 변화, 빈 곳 클릭으로 점 추가, 점 드래그로 이동. Enter 추가, 방향키 이동, Delete 삭제." onPointerDown={down} onPointerMove={move} onPointerLeave={leave} onPointerUp={release} onPointerCancel={release} onLostPointerCapture={release} onKeyDown={keys}/><p className="scene-instruction">커서만 움직여도 영역이 바뀝니다 · 클릭으로 점 추가 · 드래그로 고정</p></div><div className="work-controls"><button className="control-button" onClick={()=>reset(crypto.getRandomValues(new Uint32Array(1))[0])}>점 다시 배치</button><p className="control-note" aria-live="polite">{count}개의 점 · 최대 150개<br/>삼각망 보기로 보로노이와 Delaunay의 관계를 비교하세요.</p></div></>;
+  return <><div className="work-controls original-presets"><div className="preset-options">{[['cells','영역 보기'],['triangles','삼각망 보기'],['erase','점 지우기']].map(([id,label])=><button key={id} className={`control-button ${mode===id?'active':''}`} aria-pressed={mode===id} onClick={()=>setMode(id)}>{label}</button>)}</div></div><div className="stage delaunay-stage"><canvas ref={canvas} tabIndex={0} aria-label="보로노이 편집기. 커서 이동으로 영역 변화, 빈 곳 클릭으로 점 추가, 점 드래그로 이동. Enter 추가, 방향키 이동, Delete 삭제." onPointerDown={down} onPointerMove={move} onPointerLeave={leave} onPointerUp={release} onPointerCancel={release} onLostPointerCapture={release} onKeyDown={keys}/><p className="scene-instruction">커서만 움직여도 영역이 바뀝니다 · 클릭으로 점 추가 · 드래그로 고정</p></div><Controls className="work-controls"><button className="control-button" onClick={()=>reset(crypto.getRandomValues(new Uint32Array(1))[0])}>점 다시 배치</button><p className="control-note" aria-live="polite">{count}개의 점 · 최대 150개<br/>삼각망 보기로 보로노이와 Delaunay의 관계를 비교하세요.</p></Controls></>;
 }

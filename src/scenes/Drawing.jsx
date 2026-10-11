@@ -1,3 +1,4 @@
+import { Controls } from './Controls';
 import React, { useEffect, useRef, useState } from 'react';
 import { Download } from 'lucide-react';
 import { canvasContext, saveText, useLoop } from './shared';
@@ -50,7 +51,7 @@ function Fish({ paused, seed, ink, reduced }) {
   }
   useLoop(draw, paused);
   useEffect(() => { if (paused && version) draw(0, 0); }, [version, paused]);
-  return <><div className="stage fish-stage"><canvas ref={canvas} aria-label="fishdraw 원본 코드가 생성한 물고기 선화"/><span className="fish-meta">SPECIMEN {String(seed * 100 + count.current).padStart(4, '0')}</span>{!version && <div className="scene-message">{error || '새로운 물고기를 그리고 있습니다'}</div>}</div><div className="work-controls"><button className="control-button" disabled={!version} onClick={() => saveText(art.current.svg, `fishdraw-${seed}-${count.current}.svg`)}><Download size={14}/>이 물고기 저장</button><p className="control-note">15초마다 새로운 물고기.<br/>한 번도 같지 않은 선의 조합.</p></div></>;
+  return <><div className="stage fish-stage"><canvas ref={canvas} aria-label="fishdraw 원본 코드가 생성한 물고기 선화"/><span className="fish-meta">SPECIMEN {String(seed * 100 + count.current).padStart(4, '0')}</span>{!version && <div className="scene-message">{error || '새로운 물고기를 그리고 있습니다'}</div>}</div><Controls className="work-controls"><button className="control-button" disabled={!version} onClick={() => saveText(art.current.svg, `fishdraw-${seed}-${count.current}.svg`)}><Download size={14}/>이 물고기 저장</button><p className="control-note">15초마다 새로운 물고기.<br/>한 번도 같지 않은 선의 조합.</p></Controls></>;
 }
 
 function Landscape({ paused, seed }) {
@@ -78,7 +79,7 @@ function Landscape({ paused, seed }) {
       w.update(); elapsed.current = 0;
     } else w.viewupdate();
   }, paused);
-  return <><div className="stage landscape-stage"><iframe key={seed} ref={frame} src={`${assetUrl('vendor/shan-shui.html')}?seed=openvisuals${seed}`} title="Shan Shui Infinite 원본 생성 산수화" onLoad={configure}/>{!ready && <div className="scene-message">산과 나무를 그리고 있습니다</div>}</div><div className="work-controls"><button className="control-button" disabled={!ready} onClick={() => saveText(frame.current.contentDocument.getElementById('BG').innerHTML, `shan-shui-${seed}.svg`)}><Download size={14}/>이 풍경 저장</button><p className="control-note">산 너머 또 다른 산.<br/>풍경은 천천히 이어집니다.</p></div></>;
+  return <><div className="stage landscape-stage"><iframe key={seed} ref={frame} src={`${assetUrl('vendor/shan-shui.html')}?seed=openvisuals${seed}`} title="Shan Shui Infinite 원본 생성 산수화" onLoad={configure}/>{!ready && <div className="scene-message">산과 나무를 그리고 있습니다</div>}</div><Controls className="work-controls"><button className="control-button" disabled={!ready} onClick={() => saveText(frame.current.contentDocument.getElementById('BG').innerHTML, `shan-shui-${seed}.svg`)}><Download size={14}/>이 풍경 저장</button><p className="control-note">산 너머 또 다른 산.<br/>풍경은 천천히 이어집니다.</p></Controls></>;
 }
 
 function Line({ seed, paused, reduced, ink }) {
@@ -137,7 +138,7 @@ function Line({ seed, paused, reduced, ink }) {
     }
     ctx.fill();ctx.restore();
   }, paused);
-  return <><div className="stage line-stage"><div ref={host} role="img" aria-label="작은 입자로 흩어졌다 모이는 은선 제거 선화" style={{width:'100%',height:'100%'}}/><canvas ref={dust} aria-hidden="true" style={{position:'absolute',inset:0,width:'100%',height:'100%',pointerEvents:'none'}}/>{!svg && <div className="scene-message">{error || '보이는 선과 가려진 선을 계산하고 있습니다'}</div>}</div><div className="work-controls original-presets"><div className="preset-options">{[['city','층층의 도시'],['orbits','구의 군집'],['terrain','산의 능선']].map(([id,label])=><button key={id} className={`control-button ${mode===id?'active':''}`} aria-pressed={mode===id} onClick={()=>setMode(id)}>{label}</button>)}</div></div><div className="work-controls"><button className="control-button" disabled={!svg} onClick={() => saveText(svg.replaceAll('currentColor', '#383254'), `ln-${mode}-${seed}-${edition}.svg`)}><Download size={14}/>선화 저장</button><p className="control-note">{paused ? '자동 생성 일시정지' : '3초마다 새로운 장면'} · #{edition}<br/>{reduced ? '동작 줄이기 · 전환 효과 생략' : '1초 동안 작은 입자로 흩어졌다 모이는 선.'}</p>{error && <p role="alert">{error}</p>}</div></>;
+  return <><div className="stage line-stage"><div ref={host} role="img" aria-label="작은 입자로 흩어졌다 모이는 은선 제거 선화" style={{width:'100%',height:'100%'}}/><canvas ref={dust} aria-hidden="true" style={{position:'absolute',inset:0,width:'100%',height:'100%',pointerEvents:'none'}}/>{!svg && <div className="scene-message">{error || '보이는 선과 가려진 선을 계산하고 있습니다'}</div>}</div><div className="work-controls original-presets"><div className="preset-options">{[['city','층층의 도시'],['orbits','구의 군집'],['terrain','산의 능선']].map(([id,label])=><button key={id} className={`control-button ${mode===id?'active':''}`} aria-pressed={mode===id} onClick={()=>setMode(id)}>{label}</button>)}</div></div><Controls className="work-controls"><button className="control-button" disabled={!svg} onClick={() => saveText(svg.replaceAll('currentColor', '#383254'), `ln-${mode}-${seed}-${edition}.svg`)}><Download size={14}/>선화 저장</button><p className="control-note">{paused ? '자동 생성 일시정지' : '3초마다 새로운 장면'} · #{edition}<br/>{reduced ? '동작 줄이기 · 전환 효과 생략' : '1초 동안 작은 입자로 흩어졌다 모이는 선.'}</p>{error && <p role="alert">{error}</p>}</Controls></>;
 }
 
 export default function Drawing(props) { return props.kind === 'fish' ? <Fish {...props}/> : props.kind === 'landscape' ? <Landscape {...props}/> : <Line {...props}/>; }

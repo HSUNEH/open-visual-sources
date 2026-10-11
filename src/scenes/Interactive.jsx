@@ -1,3 +1,4 @@
+import { Controls } from './Controls';
 import React, { useEffect, useRef, useState } from 'react';
 import DelaunayStudy from './Delaunay';
 import { Upload, Download } from 'lucide-react';
@@ -103,23 +104,23 @@ function ImageStudy({ kind, paused, seed }) {
   function download() { if (kind==='primitive') { saveText(vector,'primitive-vector.svg');return; } const anchor = document.createElement('a'); anchor.download = `${kind}-1200px.png`; anchor.href = result.current.toDataURL('image/png'); anchor.click(); }
   return <>
     <div className="stage image-study">
-      <div className="study-original" style={{ position: 'relative' }}><canvas ref={source} aria-label="변환할 원본 이미지"/><span className="study-label">INPUT</span></div>
+      <div className="study-original"><canvas ref={source} aria-label="변환할 원본 이미지"/><span className="study-label">INPUT</span></div>
       <div className="study-result">
         {kind === 'primitive' ? <div className="primitive-vector" role="img" aria-label="primitive.js가 삼각형으로 재구성한 고해상도 벡터 이미지" dangerouslySetInnerHTML={{__html:vector}}/> : <canvas ref={result} aria-label="1200px로 렌더링한 실선 이미지" style={{borderRadius:'50%'}}/>}
         <span className="study-label">{busy ? '이미지 준비 중' : `${count} / ${limit} ${kind === 'thread' ? 'THREADS · 1200px' : 'TRIANGLES · VECTOR'}`}</span>
       </div>
-      <div className="painting-picker" aria-label={kind === 'thread' ? '얼굴 이미지로 바로 체험' : '명화로 바로 체험'}>
+      <Controls className="painting-picker" aria-label={kind === 'thread' ? '얼굴 이미지로 바로 체험' : '명화로 바로 체험'}>
         {choices.map(painting => <button key={painting.id} onClick={() => selectPainting(painting)} aria-pressed={selected === painting.id} aria-label={`${painting.artist} ${painting.title} 선택`}><img src={paintingPath(painting.id)} alt=""/><span>{painting.artist}<small>{painting.title}</small></span></button>)}
         {selectedPainting && <a className="painting-credit" href={kind === 'thread' ? `https://commons.wikimedia.org/wiki/File:${selectedPainting.file}` : `https://www.artic.edu/artworks/${selected}`} target="_blank" rel="noreferrer">{kind === 'thread' ? 'Wikimedia Commons · Public domain ↗' : 'Art Institute of Chicago · CC0 ↗'}</a>}
-      </div>
+      </Controls>
     </div>
-    <div className="work-controls">
+    <Controls className="work-controls">
       <label className="control-button upload-control"><Upload size={14}/>{busy ? '이미지 읽는 중' : '내 이미지 넣기'}<input type="file" accept="image/png,image/jpeg,image/webp,image/avif" aria-label="변환할 이미지 업로드" onChange={upload} disabled={busy}/></label>
       <div className="extra-control"><Slider label={kind === 'thread' ? '목표 선 개수' : '목표 도형 개수'} value={limit} onChange={setLimit} min={kind === 'thread' ? 300 : 100} max={kind === 'thread' ? 2400 : 700} step={100}/></div>
       <button className="control-button extra-control" onClick={download}><Download size={13}/>결과 저장</button>
       {error && <p className="image-error" role="alert">{error}</p>}
       <p className="control-note">{kind === 'thread' ? '원리를 체험하는 자체 데모.' : 'primitive.js 브라우저 포트.'}<br/>업로드한 이미지는 전송되지 않습니다.</p>
-    </div>
+    </Controls>
   </>;
 }
 

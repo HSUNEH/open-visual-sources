@@ -1,3 +1,4 @@
+import { Controls } from './Controls';
 import React,{useLayoutEffect,useMemo,useRef,useState} from 'react';
 import {Canvas,useFrame,useThree} from '@react-three/fiber';
 import {Slider} from './shared';
@@ -55,5 +56,5 @@ function Field({paused,density,cut,seed,sliceMode}){
 }
 export default function Volume({paused,seed}){
   const [density,setDensity]=useState(48),[cut,setCut]=useState(65);
-  return <><div className="stage volume-lab"><div className="volume-object"><Canvas dpr={[1,1.5]} frameloop={paused?'demand':'always'} gl={{antialias:false}} fallback={<p>이 실험에는 WebGL이 필요합니다.</p>}><Field paused={paused} density={density} cut={cut} seed={seed}/></Canvas><span>3D 밀도장 · 잘라낸 입체</span></div><div className="volume-slice"><Canvas dpr={[1,1.5]} frameloop={paused?'demand':'always'} gl={{antialias:false}}><Field paused={paused} density={density} cut={cut} seed={seed} sliceMode/></Canvas><span>같은 위치의 2D 단면</span></div><p className="scene-instruction">단면 위치를 움직여 입체 내부를 잘라 보세요. 밝은 영역만 입체로 남습니다.</p></div><div className="work-controls"><Slider label="밀도 경계" value={density} onChange={setDensity} min={10} max={80}/><Slider label="단면 위치" value={cut} onChange={setCut} min={5} max={100} suffix="%"/><p className="control-note">움직이는 3D 노이즈를 입체와 단면으로 비교합니다. 자체 GLSL 원리 실험입니다.</p></div></>;
+  return <><div className="stage volume-lab"><div className="volume-object"><Canvas dpr={[1,1.5]} frameloop={paused?'demand':'always'} gl={{antialias:false}} fallback={<p>이 실험에는 WebGL이 필요합니다.</p>}><Field paused={paused} density={density} cut={cut} seed={seed}/></Canvas><span>3D 밀도장 · 잘라낸 입체</span></div><div className="volume-slice"><Canvas dpr={[1,1.5]} frameloop={paused?'demand':'always'} gl={{antialias:false}}><Field paused={paused} density={density} cut={cut} seed={seed} sliceMode/></Canvas><span>같은 위치의 2D 단면</span></div><p className="scene-instruction">단면 위치를 움직여 입체 내부를 잘라 보세요. 밝은 영역만 입체로 남습니다.</p></div><Controls className="work-controls"><Slider label="밀도 경계" value={density} onChange={setDensity} min={10} max={80}/><Slider label="단면 위치" value={cut} onChange={setCut} min={5} max={100} suffix="%"/><p className="control-note">움직이는 3D 노이즈를 입체와 단면으로 비교합니다. 자체 GLSL 원리 실험입니다.</p></Controls></>;
 }

@@ -1,3 +1,4 @@
+import { Controls } from './Controls';
 import React,{useEffect,useRef,useState} from 'react';
 import {assetUrl} from '../asset-url';
 import {ArrowRight} from 'lucide-react';
@@ -29,6 +30,6 @@ export default function WaveFunction({paused,seed}) {
   useEffect(()=>{worker.current?.postMessage({type:'pause',paused});},[paused]);
   return <><div className="work-controls original-presets"><div className="preset-options">{samples.map(([,name],i)=><button key={name} className={`control-button ${choice===i?'active':''}`} aria-pressed={choice===i} onClick={()=>setChoice(i)}>{name}</button>)}</div></div>
     <div className="stage wfc-stage"><figure className="wfc-sample"><img src={assetUrl(`vendor/wfc/samples/${samples[choice][0]}.png`)} alt={`${samples[choice][1]} 원본 표본`}/><figcaption>작은 표본</figcaption></figure><ArrowRight className="wfc-arrow" aria-hidden="true"/><figure className="wfc-result"><canvas ref={canvas} width="64" height="40" aria-label="표본의 인접 규칙으로 생성하는 새로운 패턴"/><figcaption role="status">{paused?'계산 일시정지':status}</figcaption></figure>{error&&<div className="original-loading" role="alert">{error}</div>}</div>
-    <div className="work-controls"><button className="control-button" onClick={()=>setIteration(v=>v+1)}>같은 규칙으로 다시 생성</button><p className="control-note">작은 표본에서 이웃의 규칙을 배웁니다.<br/>흐린 가능성이 하나의 패턴으로 정해집니다.</p></div>
+    <Controls className="work-controls"><button className="control-button" onClick={()=>setIteration(v=>v+1)}>같은 규칙으로 다시 생성</button><p className="control-note">작은 표본에서 이웃의 규칙을 배웁니다.<br/>흐린 가능성이 하나의 패턴으로 정해집니다.</p></Controls>
   </>;
 }

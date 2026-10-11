@@ -1,0 +1,77 @@
+/* Mobile is an artwork viewer, not a compressed desktop caption layout. */
+.mobile-about,.mobile-controls-toggle,.mobile-control-sheet{display:none}
+.study-original{position:relative}
+@media(max-width:700px),(max-width:1000px) and (max-height:500px){
+  .exhibition{--mobile-top:calc(110px + env(safe-area-inset-top));--mobile-bottom:calc(184px + env(safe-area-inset-bottom))}
+  .header{height:var(--mobile-top);padding:calc(8px + env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left));align-items:flex-start}
+  .brand{height:44px;font-size:14px;gap:8px}.brand svg{width:26px;height:26px}
+  .catalog-button{height:44px;padding:0;gap:7px}.catalog-button>span:not(.total){display:block;font-size:12px}
+  .theme-nav{top:calc(58px + env(safe-area-inset-top));left:16px;right:16px;transform:none;gap:0;justify-content:space-between}
+  .theme-nav button{padding:0 4px;min-height:44px}.theme-en{font-size:12px}.theme-ko{display:none}
+  .work-context,.work-rail{display:none}
+  .exhibition .work .stage{inset:var(--mobile-top) 12px var(--mobile-bottom);gap:12px}
+  .exhibition .work:has(.original-presets) .stage{top:calc(var(--mobile-top) + 56px)}
+  .exhibition .work .original-presets{top:var(--mobile-top);bottom:auto;left:16px;right:16px;transform:none;max-width:none;min-width:0}
+  .preset-options{gap:6px;justify-content:center}.preset-options .control-button{min-height:44px;padding:8px;font-size:12px;flex:1;white-space:normal}
+  .exhibition .work .work-caption{bottom:calc(108px + env(safe-area-inset-bottom));left:16px;right:16px;max-width:none;padding-right:100px}
+  .exhibition .work .work-caption h1{font-size:28px;line-height:1.15;margin:0 0 5px;white-space:normal}
+  .work-caption h2{font-size:12px;line-height:1.4;margin:0}
+  .work-caption>p,.work-caption .credit{display:none}
+  .mobile-about{display:flex;align-items:center;justify-content:center;gap:6px;position:absolute;right:0;bottom:0;min-height:44px;font-size:12px;pointer-events:auto;padding:0 2px}
+  .playback-controls{bottom:calc(56px + env(safe-area-inset-bottom));left:16px;right:16px;gap:8px}
+  .playback-controls .icon-button,.icon-button{width:44px;height:44px}
+  .mobile-controls-toggle{display:flex;min-height:44px;font-size:14px;margin-right:auto;padding:8px 14px}
+  .mobile-controls-toggle[aria-expanded=true]{background:var(--ink);color:var(--paper)}
+  .footer{height:calc(48px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);left:16px;right:16px;font-size:11px}
+  .footer-note{font-size:10px}.next-controls{gap:8px}.previous,.next{min-height:44px;min-width:44px;padding:8px;font-size:12px}.next{gap:8px}.next svg,.previous svg{width:17px}.navigation-hint{display:none}
+  .exhibition .stage.mapgen-stage{container-type:size}
+  .mapgen-stage iframe{width:min(100cqw,100cqh);height:min(100cqw,100cqh);max-width:none;flex-shrink:0}
+  .exhibition .stage.image-study{container-type:size;display:grid;place-items:center}
+  .study-result{width:min(100cqw,100cqh);height:min(100cqw,100cqh);max-width:none}
+  .study-original{position:absolute;right:0;bottom:0;width:54px;height:54px;max-width:none;border:2px solid var(--paper);z-index:1}
+  .study-original .study-label{display:none}.study-result .study-label{top:100%;bottom:auto;font-size:10px;margin-top:6px}.painting-credit{display:none}
+  .exhibition .stage.sand-stage{container-type:size}
+  .sand-stage>canvas{width:min(100cqw,150cqh);height:auto;max-height:100%;flex-shrink:0}
+  .exhibition .stage.three-stage:after{display:none}
+  .three-stage canvas{touch-action:none!important}
+  .scene-instruction,.nca-instruction,.lightweight-instruction{top:calc(100% + 6px);bottom:auto!important;font-size:11px;line-height:1.4;white-space:normal;max-height:32px;overflow:hidden}
+  .volume-object{width:100%;height:100%}.volume-slice{position:absolute;width:28%;bottom:12px;right:4px}
+  .volume-object>span{left:0!important;font-size:10px}.volume-slice>span{display:none}
+  .wfc-stage{flex-wrap:wrap}.wfc-sample{position:absolute;bottom:0;left:0;width:16%;z-index:1}.wfc-arrow{display:none}.wfc-result{width:100%;max-height:100%}.wfc-sample figcaption{display:none}.wfc-stage figcaption{font-size:10px}
+  .fish-meta{font-size:8px;right:0}
+  .mobile-control-sheet:not([hidden]){display:block;position:fixed;z-index:30;left:0;right:0;bottom:calc(108px + env(safe-area-inset-bottom));max-height:55dvh;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;background:var(--paper);border-top:1px solid color-mix(in srgb,var(--ink) 30%,transparent);box-shadow:0 -12px 32px #0001;padding:0 20px 20px;scrollbar-width:thin;scrollbar-color:var(--ink) var(--paper)}
+  .mobile-sheet-header{display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;background:var(--paper);z-index:2;padding:8px 0}
+  .mobile-sheet-header h2{font-size:16px;font-weight:600;margin:0}
+  .mobile-control-groups{display:flex;flex-direction:column;gap:20px}
+  .mobile-control-groups .work-controls,.mobile-control-groups .painting-picker,.mobile-control-groups .brush-palette,.mobile-control-groups .sand-materials{position:static;inset:auto;transform:none;width:100%;max-width:none;min-width:0;margin:0;gap:12px}
+  .mobile-control-groups .work-controls label,.mobile-control-groups .work-controls .extra-control{display:flex}
+  .mobile-control-groups .work-controls label{gap:4px}
+  .mobile-control-groups .slider-label{font-size:14px;justify-content:space-between}
+  .mobile-control-groups input[type=range]{width:100%;height:44px;min-height:44px;touch-action:pan-y}
+  .mobile-control-groups .control-button{font-size:14px;min-height:44px;padding:10px 12px}
+  .mobile-control-groups .control-note{display:block;font-size:12px;line-height:1.6;max-width:none}
+  .mobile-control-groups .brush-actions,.mobile-control-groups .nca-actions,.mobile-control-groups .lightweight-actions{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+  .mobile-control-groups .brush-palette{justify-content:flex-start;flex-wrap:wrap}.mobile-control-groups .brush-palette button{width:44px;height:44px}
+  .mobile-control-groups .painting-picker{flex-wrap:wrap}.mobile-control-groups .painting-picker button{flex:1;min-width:0;padding:6px;font-size:12px}.mobile-control-groups .painting-picker img{height:60px}.mobile-control-groups .painting-picker small{font-size:10px;white-space:normal}
+  .mobile-control-groups .painting-credit{display:block;position:static;flex-basis:100%;font-size:11px;white-space:normal;min-height:44px;padding-top:12px}
+  .mobile-control-groups .sand-materials{justify-content:flex-start}
+  .immersive .mobile-controls-toggle{display:none}
+  .exhibition.immersive .work .stage{inset:calc(12px + env(safe-area-inset-top)) 12px calc(72px + env(safe-area-inset-bottom))}
+  .immersive .playback-controls{left:auto;right:16px;bottom:calc(12px + env(safe-area-inset-bottom));opacity:1}
+  .dialog-content{padding:76px 24px 36px}.dialog-content>p,.dialog-intro,dl{font-size:16px}.dialog-close{width:44px;height:44px}
+}
+@media(max-width:1000px) and (max-height:500px){
+  .exhibition{--mobile-top:64px;--mobile-bottom:54px}
+  .header{height:60px;padding-top:8px}.theme-nav{top:8px;left:145px;right:130px}.brand{font-size:12px}.catalog-button>span{display:none!important}
+  .exhibition .work .stage,.exhibition .work:has(.original-presets) .stage{top:var(--mobile-top);right:236px}
+  .exhibition .work .original-presets{left:auto;right:16px;width:204px}
+  .exhibition .work .work-caption{bottom:6px;left:16px;right:240px;padding:0;display:flex;align-items:center;gap:16px}.exhibition .work .work-caption h1{font-size:22px;margin:0}.work-caption h2{display:none}.mobile-about{position:static;flex-shrink:0}
+  .playback-controls{left:auto;right:16px;bottom:64px;width:204px;flex-wrap:wrap;justify-content:flex-end}.mobile-controls-toggle{margin:0;flex-basis:100%}
+  .footer{display:flex;left:auto;right:16px;bottom:0;width:204px;height:52px}.footer-note{display:none}.next-controls{width:100%;justify-content:space-between}
+  .scene-instruction,.nca-instruction,.lightweight-instruction{display:none}
+  .mobile-control-sheet:not([hidden]){left:auto;width:min(430px,100%);bottom:70px;max-height:calc(100dvh - 80px)}
+}
+@media(max-width:360px){
+  .exhibition .work .work-caption h1{font-size:24px}
+  .footer-note{max-width:126px;line-height:1.4}.theme-en{font-size:11px}
+}

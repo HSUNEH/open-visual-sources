@@ -1,3 +1,4 @@
+import { Controls } from './Controls';
 import React,{useEffect,useRef,useState} from 'react';
 import {createSand,renderSand} from './sand-engine';
 import {assetUrl} from '../asset-url';
@@ -57,7 +58,7 @@ export default function Sand({paused,seed}) {
   return <>
     <div className="work-controls original-presets"><div className="preset-options">{['모래와 얼음','작은 숲'].map((name,i)=><button className={`control-button ${preset===i?'active':''}`} key={name} aria-pressed={preset===i} disabled={!ready} onClick={()=>reset(i)}>{name}</button>)}</div></div>
     <div className="stage sand-stage"><canvas ref={canvas} width="192" height="128" aria-label="모래, 물, 불을 그려 넣는 Sandspiel 실험" onPointerDown={event=>{if(!ready)return;event.currentTarget.setPointerCapture(event.pointerId);drawing.current=point(event);paint(event);}} onPointerMove={paint} onPointerUp={()=>drawing.current=null} onPointerCancel={()=>drawing.current=null} onLostPointerCapture={()=>drawing.current=null}/>{!ready&&<div className="original-loading" role={error?'alert':'status'}>{error||'모래와 물의 규칙을 불러오고 있습니다'}</div>}
-    <div className="sand-materials" aria-label="그릴 물질">{materials.map(([id,name])=><button key={id} className={`control-button ${material===id?'active':''}`} aria-pressed={material===id} disabled={!ready} onClick={()=>setMaterial(id)}>{name}</button>)}</div></div>
-    <div className="work-controls"><Slider label="붓 크기" value={brush} min={2} max={26} onChange={setBrush}/><p className="control-note">물질을 고르고 화면에 그려 보세요.<br/>모래는 가라앉고, 불은 나무를 태웁니다.</p><button className="control-button" disabled={!ready} onClick={()=>{engine.current.paint(133,60,23,6);draw();}}>얼음 옆에 불 놓기</button></div>
+    <Controls className="sand-materials" aria-label="그릴 물질">{materials.map(([id,name])=><button key={id} className={`control-button ${material===id?'active':''}`} aria-pressed={material===id} disabled={!ready} onClick={()=>setMaterial(id)}>{name}</button>)}</Controls></div>
+    <Controls className="work-controls"><Slider label="붓 크기" value={brush} min={2} max={26} onChange={setBrush}/><p className="control-note">물질을 고르고 화면에 그려 보세요.<br/>모래는 가라앉고, 불은 나무를 태웁니다.</p><button className="control-button" disabled={!ready} onClick={()=>{engine.current.paint(133,60,23,6);draw();}}>얼음 옆에 불 놓기</button></Controls>
   </>;
 }
